@@ -1,0 +1,64 @@
+﻿body {
+
+    font-family: 'Times New Roman';
+}
+
+.Header {
+    margin-top : 0%;
+    text-align: center;
+    line-height: 1;
+    font-weight: 500;
+    text-shadow : 1px 3px 4px #808080;
+    font-family : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+
+
+.creation-form {
+    background-color: gold;
+    width: 35%;
+    margin-left: 33%;
+    border: 1px solid #c0c0c0;
+    margin-top: 1%;
+    padding-top : 0.73%;
+}
+
+
+
+.text-line {
+    padding : 5.33%;
+    margin-left : 7%;
+    
+}
+
+#MovieName,
+#MovieDirector,
+#MovieActor
+{
+    padding-left : 1.5%;
+    border-radius : 0.5em;
+    width : 52%;
+    font-size : medium;
+    float : right;
+    margin-right : 7%
+}
+
+
+label {
+    font-size : medium;
+    font-weight : bold;
+    text-align : left;
+    
+    
+}
+
+.IMDB-image img{
+    margin-left : 47.5%;
+    margin-top : 5.3%;
+    opacity : 0.8;
+}
+
+.IMDB-image img:hover{
+    opacity : 1;
+}

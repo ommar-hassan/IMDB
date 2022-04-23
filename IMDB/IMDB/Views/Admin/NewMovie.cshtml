@@ -1,0 +1,66 @@
+﻿@model IMDB.Models.Movie
+@{
+
+    ViewBag.Title = "NewMovie";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/IMDBStyleSheet.css">
+    <title>Create New Movie</title>
+
+</head>
+<body>
+        <div class="IMDB-image"> <img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb logo" /> </div>
+        <div class="creation-form">
+            <h1 class="Header">Create New Movie</h1>
+
+
+            @using (Html.BeginForm())
+            {
+                <div class="text-line">
+
+                    @Html.LabelFor(text => text.MovieName, "Movie Name")
+
+                    @Html.TextBoxFor(name => name.MovieName)
+
+                </div>
+
+                <div class="text-line">
+
+                    @Html.LabelFor(text => text.MovieName, "Movie Director")
+
+                    @Html.TextBoxFor(name => name.MovieName)
+
+                </div>
+
+                <div class="text-line">
+
+                    @Html.LabelFor(text => text.MovieName, "Movie Actors")
+
+                    @Html.TextBoxFor(name => name.MovieName)
+
+
+
+                </div>
+            }
+        </div>
+
+    <button>
+        +
+    </button>
+
+    <p id="new"></p>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+
+        $("button").click(() => {
+            $("p#new").append("Your input textbox<input ---/>")
+        })
+    </script>
+
+
+</body>
+</html>
