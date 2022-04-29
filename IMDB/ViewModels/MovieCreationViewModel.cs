@@ -6,13 +6,13 @@ using IMDB.Models;
 
 namespace IMDB.ViewModels
 {
-    public class MovieDirectorsViewModel 
+    public class MovieCreationViewModel 
     {
         public Movie Movie { get; set; }
 
         public IEnumerable<Director> Directors { get; set; }
 
-        public MovieActor MovieActors { get; set; }
+        public IEnumerable<MovieActor> MovieActors { get; set; }
 
     }
 }

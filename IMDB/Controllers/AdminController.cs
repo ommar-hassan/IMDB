@@ -22,7 +22,7 @@ namespace IMDB.Controllers
 
             var director = db.Directors.ToList();
 
-            MovieDirectorsViewModel movieDirectorsViewModel = new MovieDirectorsViewModel
+            MovieCreationViewModel movieDirectorsViewModel = new MovieCreationViewModel
             {
                 Directors = director
                 
@@ -34,7 +34,7 @@ namespace IMDB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewMovie(HttpPostedFileBase movieImage, MovieDirectorsViewModel movieDirectorsViewModel)
+        public ActionResult NewMovie(HttpPostedFileBase movieImage, MovieCreationViewModel movieDirectorsViewModel)
         {
 
             if (movieImage == null)
