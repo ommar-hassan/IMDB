@@ -44,14 +44,13 @@
             </div>
 
             <div class="text-line">
-                <input type="submit" value="Create" class="button"/>
+                <input type="submit" value="Create" class="button" />
+                @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { id = "BackBtn" })
             </div>
         }
     </div>
 
-    <div>
-        @Html.ActionLink("Back to List", "Home")
-    </div>
+
 
 
 </body>
