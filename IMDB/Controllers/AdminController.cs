@@ -21,11 +21,12 @@ namespace IMDB.Controllers
         {
 
             var director = db.Directors.ToList();
+            var actor = db.Actors.ToList();
 
             MovieCreationViewModel movieDirectorsViewModel = new MovieCreationViewModel
             {
-                Directors = director
-                
+                Directors = director,
+                Actors = actor
             };
 
             return View(movieDirectorsViewModel);
@@ -59,7 +60,36 @@ namespace IMDB.Controllers
             db.Movies.Add(movieDirectorsViewModel.Movie);
             db.SaveChanges();
 
+            var actor = movieDirectorsViewModel.MovieActors;
+
+
+            db.MovieActors.Add(movieDirectorsViewModel.MovieActors);
+            //db.MovieActors.Add(movieDirectorsViewModel.Movie.MovieID);
+            db.SaveChanges();
+
             return RedirectToAction("NewMovie"); // After create go to NewMovie
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult NewDirector()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewDirector(Director director) {
+
+            if (ModelState.IsValid)
+            {
+                db.Directors.Add(director);
+                db.SaveChanges();
+                return RedirectToAction("NewDirector");
+            }
+
+            return View("NewDirector");
         }
 
     }

@@ -37,9 +37,11 @@
                 @Html.ValidationMessageFor(name => name.Movie.DirectorID)
             </div>
 
-            <div class="text-line"> <!-- in progress -->
-                @Html.LabelFor(text => text.Movie.MovieName, "Movie Actors")
-                @Html.TextBoxFor(name => name.Movie.MovieName, new { @class = "input" })
+            <div class="text-line">
+                @Html.LabelFor(text => text.MovieActors.Actor, "Movie Actors")
+                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor1", new { @class = "list" })
+                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor2", new { @class = "list" })
+                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor3", new { @class = "list" })
             </div>
 
             <div class="text-line">
