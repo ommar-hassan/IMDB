@@ -14,7 +14,10 @@ namespace IMDB.Models
 
         public virtual User UserID { get; set; }
 
-        public virtual Movie MovieID { get; set; }
+        public virtual Movie Movie { get; set; }
+
+        [ForeignKey("Movie")]
+        public int MovieID { get; set; }
 
         public Boolean LikeValue { get; set; }
     }
