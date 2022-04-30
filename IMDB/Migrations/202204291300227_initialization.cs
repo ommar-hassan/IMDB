@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FixingDbError : DbMigration
+    public partial class initialization : DbMigration
     {
         public override void Up()
         {

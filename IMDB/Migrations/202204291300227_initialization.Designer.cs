@@ -7,13 +7,13 @@ namespace IMDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class FixingDbError : IMigrationMetadata
+    public sealed partial class initialization : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixingDbError));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialization));
         
         string IMigrationMetadata.Id
         {
-            get { return "202204291205408_FixingDbError"; }
+            get { return "202204291300227_initialization"; }
         }
         
         string IMigrationMetadata.Source

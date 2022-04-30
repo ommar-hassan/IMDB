@@ -116,12 +116,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204291205408_FixingDbError.cs" />
-    <Compile Include="Migrations\202204291205408_FixingDbError.designer.cs">
-      <DependentUpon>202204291205408_FixingDbError.cs</DependentUpon>
+    <Compile Include="Migrations\202204291300227_initialization.cs" />
+    <Compile Include="Migrations\202204291300227_initialization.designer.cs">
+      <DependentUpon>202204291300227_initialization.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ImageConversion.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ImageConversion.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Director.cs" />
@@ -129,7 +129,7 @@
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieActor.cs" />
-    <Compile Include="ViewModels\MovieDirectorsViewModel.cs" />
+    <Compile Include="ViewModels\MovieCreationViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFavoriteActor.cs" />
     <Compile Include="Models\UserFavoriteDirector.cs" />
@@ -155,8 +155,8 @@
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202204291205408_FixingDbError.resx">
-      <DependentUpon>202204291205408_FixingDbError.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202204291300227_initialization.resx">
+      <DependentUpon>202204291300227_initialization.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

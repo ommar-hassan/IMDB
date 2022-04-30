@@ -16,6 +16,6 @@ namespace IMDB.Models
 
         public Movie Movie { get; set; }
 
-        public User UserID { get; set; }
+        public virtual User UserID { get; set; }
     }
 }

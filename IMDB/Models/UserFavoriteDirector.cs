@@ -11,8 +11,8 @@ namespace IMDB.Models
         [Key]
         public int ID { get; set; }
 
-        public User UserID { get; set; }
+        public virtual User UserID { get; set; }
 
-        public Director DirectorID { get; set; }
+        public virtual Director DirectorID { get; set; }
     }
 }

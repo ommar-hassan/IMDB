@@ -12,8 +12,8 @@ namespace IMDB.Models
         [Key]
         public int ID { get; set; }
 
-        public Movie MovieID { get; set; }
+        public virtual Movie MovieID { get; set; }
 
-        public Actor ActorID { get; set; }
+        public virtual Actor ActorID { get; set; }
     }
 }

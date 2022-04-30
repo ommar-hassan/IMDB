@@ -19,7 +19,7 @@ namespace IMDB.Models
         [Display(Name = "Movie Image")]
         public Byte[] MovieIMG { get; set; }
         
-        public Director Director { get; set; }
+        public virtual Director Director { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Display(Name = "Movie Director")]
