@@ -22,6 +22,7 @@ namespace IMDB.Models
         public virtual Director Director { get; set; }
 
         [Required(ErrorMessage = "*")]
+        [ForeignKey("Director")]
         [Display(Name = "Movie Director")]
         public int? DirectorID { get; set; }
     }

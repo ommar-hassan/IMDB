@@ -120,6 +120,10 @@
     <Compile Include="Migrations\202204291300227_initialization.designer.cs">
       <DependentUpon>202204291300227_initialization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204300938447_foreignKeys.cs" />
+    <Compile Include="Migrations\202204300938447_foreignKeys.designer.cs">
+      <DependentUpon>202204300938447_foreignKeys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageConversion.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -157,6 +161,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204291300227_initialization.resx">
       <DependentUpon>202204291300227_initialization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204300938447_foreignKeys.resx">
+      <DependentUpon>202204300938447_foreignKeys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

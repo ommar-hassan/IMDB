@@ -15,8 +15,11 @@ namespace IMDB.Models
         public virtual Movie Movie { get; set; }
 
         [ForeignKey("Movie")]
-        public int MovieID { get; set; }
+        public int? MovieID { get; set; }
 
-        public virtual Actor ActorID { get; set; }
+        public virtual Actor Actor { get; set; }
+
+        [ForeignKey("Actor")]
+        public int? ActorID { get; set; }
     }
 }
