@@ -19,6 +19,7 @@ namespace IMDB.Models
         [Display(Name = "Last Name")]
         public String LastName { get; set; }
 
+        [Display(Name = "Age")]
         public String Age { get; set; }
     }
 }
