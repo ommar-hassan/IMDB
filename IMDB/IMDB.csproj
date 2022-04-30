@@ -149,6 +149,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Admin\NewMovie.cshtml" />
     <Content Include="Views\Admin\NewDirector.cshtml" />
+    <Content Include="Views\Admin\NewActor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

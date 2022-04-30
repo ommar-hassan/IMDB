@@ -92,5 +92,28 @@ namespace IMDB.Controllers
             return View("NewDirector");
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult NewActor()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewActor(Actor Actor)
+        {
+
+            if (ModelState.IsValid)
+            {
+                db.Actors.Add(Actor);
+                db.SaveChanges();
+                return RedirectToAction("NewActor");
+            }
+
+            return View("NewActor");
+        }
+
     }
 }
