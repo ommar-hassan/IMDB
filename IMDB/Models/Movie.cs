@@ -26,4 +26,5 @@ namespace IMDB.Models
         [Display(Name = "Movie Director")]
         public int? DirectorID { get; set; }
     }
+    
 }
