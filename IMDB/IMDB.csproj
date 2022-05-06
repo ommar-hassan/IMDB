@@ -132,6 +132,10 @@
     <Compile Include="Migrations\202204301621095_requiredFields.designer.cs">
       <DependentUpon>202204301621095_requiredFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205062158029_description.cs" />
+    <Compile Include="Migrations\202205062158029_description.designer.cs">
+      <DependentUpon>202205062158029_description.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageConversion.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -179,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204301621095_requiredFields.resx">
       <DependentUpon>202204301621095_requiredFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205062158029_description.resx">
+      <DependentUpon>202205062158029_description.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

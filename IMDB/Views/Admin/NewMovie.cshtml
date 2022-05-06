@@ -37,6 +37,11 @@
             </div>
 
             <div class="text-line">
+                @Html.LabelFor(text => text.Movie.Description)
+                @Html.TextAreaFor(name => name.Movie.Description, new { @class = "input" })
+            </div>
+
+            <div class="text-line">
                 @Html.LabelFor(text => text.MovieActors.Actor, "Movie Actors")
                 @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor1", new { @class = "list" })
                 @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor2", new { @class = "list" })
@@ -45,12 +50,11 @@
 
             <div class="text-line">
                 @Html.LabelFor(text => text.Movie.MovieIMG)
-                <input type="file" name="movieImage"/>
-
+                <input type="file" name="movieImage" />
             </div>
 
             <div class="text-line">
-                <input type="submit" value="Create" class="button"/>
+                <input type="submit" value="Create" class="button" />
                 @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { id = "BackBtn" })
             </div>
 
