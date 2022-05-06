@@ -95,7 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\IMDBStyleSheet.css" />
+    <Content Include="Content\CreationForm.css" />
     <Content Include="Global.asax" />
     <Content Include="MovieImages\DjangoUnchained.jpg" />
     <Content Include="MovieImages\Dr.Strange.jpg" />
