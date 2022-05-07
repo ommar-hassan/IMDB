@@ -43,26 +43,37 @@
 
             <div class="text-line">
                 @Html.LabelFor(text => text.MovieActors.Actor, "Movie Actors")
-                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor1", new { @class = "list" })
-                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor2", new { @class = "list" })
-                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor3", new { @class = "list" })
+                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor", new { @class = "list" , @id = "MultiDDL", multiple = "true" })
+
+
             </div>
 
             <div class="text-line">
-                @Html.LabelFor(text => text.Movie.MovieIMG)
-                <input type="file" name="movieImage" />
+                    @Html.LabelFor(text => text.Movie.MovieIMG)
+                    <input type="file" name="movieImage" class="file-upload-field"  />
             </div>
 
             <div class="text-line">
-                <input type="submit" value="Create" class="button" />
-                @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { id = "BackBtn" })
+                <input type="submit" value="Create" class="button" aria-label="File browser example" />
+                @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { @id = "BackBtn" })
             </div>
 
         }
     </div>
 
-    
-
-
 </body>
+
+
 </html>
+
+<!-- JAVA SCRIPT -->
+
+<script>
+
+    const actualBtn = document.getElementById('actual-btn');
+
+    const fileChosen = document.getElementById('file-chosen');
+
+    actualBtn.addEventListener('change', function () { fileChosen.textContent = this.files[0].name })
+
+</script>

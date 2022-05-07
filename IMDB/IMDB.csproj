@@ -136,6 +136,10 @@
     <Compile Include="Migrations\202205062158029_description.designer.cs">
       <DependentUpon>202205062158029_description.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205071936023_movieActorPK.cs" />
+    <Compile Include="Migrations\202205071936023_movieActorPK.designer.cs">
+      <DependentUpon>202205071936023_movieActorPK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageConversion.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -186,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205062158029_description.resx">
       <DependentUpon>202205062158029_description.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205071936023_movieActorPK.resx">
+      <DependentUpon>202205071936023_movieActorPK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

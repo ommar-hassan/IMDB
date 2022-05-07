@@ -16,5 +16,7 @@ namespace IMDB.ViewModels
 
         public IEnumerable<Actor> Actors { get; set; }
 
+        public List<int> ActorsID { get; set; }
+
     }
 }

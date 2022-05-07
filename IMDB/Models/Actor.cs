@@ -24,5 +24,7 @@ namespace IMDB.Models
 
         [Display(Name = "Age")]
         public String Age { get; set; }
+
+        public ICollection<MovieActor> MovieActor { get; set; }
     }
 }
