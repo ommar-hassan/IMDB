@@ -40,7 +40,7 @@ namespace IMDB.Controllers
 
             if (movieImage == null)
             {
-                return View("error");
+                return HttpNotFound();
             }
             
             
@@ -80,10 +80,21 @@ namespace IMDB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewDirector(Director director) {
+        public ActionResult NewDirector(HttpPostedFileBase directorImage, Director director) {
+
+            if (directorImage == null)
+            {
+                return HttpNotFound();
+            }
 
             if (ModelState.IsValid)
             {
+                MemoryStream target = new MemoryStream();
+                directorImage.InputStream.CopyTo(target);
+                byte[] directorImageByteArray = target.ToArray();
+                director.DirectorIMG = directorImageByteArray;
+
+
                 db.Directors.Add(director);
                 db.SaveChanges();
                 return RedirectToAction("NewDirector");
@@ -102,12 +113,21 @@ namespace IMDB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewActor(Actor Actor)
+        public ActionResult NewActor(HttpPostedFileBase actorImage, Actor actor)
         {
+            if (actorImage == null)
+            {
+                return HttpNotFound();
+            }
 
             if (ModelState.IsValid)
             {
-                db.Actors.Add(Actor);
+                MemoryStream target = new MemoryStream();
+                actorImage.InputStream.CopyTo(target);
+                byte[] actorImageByteArray = target.ToArray();
+                actor.ActorIMG = actorImageByteArray;
+
+                db.Actors.Add(actor);
                 db.SaveChanges();
                 return RedirectToAction("NewActor");
             }

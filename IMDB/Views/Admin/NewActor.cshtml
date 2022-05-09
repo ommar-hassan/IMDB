@@ -20,7 +20,7 @@
         <h1 class="Header">Create New Actor</h1>
 
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("NewActor", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -45,6 +45,11 @@
                 @Html.LabelFor(text => text.Age)
                 @Html.TextBoxFor(name => name.Age, new { @class = "input" })
                 @Html.ValidationMessageFor(name => name.Age)
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.ActorIMG)
+                <input type="file" name="actorImage" class="file-upload-field" />
             </div>
 
             <div class="text-line">

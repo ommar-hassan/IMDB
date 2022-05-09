@@ -18,6 +18,9 @@ namespace IMDB.Models
         [Display(Name = "Description")]
         public String Description { get; set; }
 
+        [Display(Name = "Actor Image")]
+        public Byte[] ActorIMG { get; set; }
+
         [Required(ErrorMessage = "*")]
         [Display(Name = "Last Name")]
         public String LastName { get; set; }
