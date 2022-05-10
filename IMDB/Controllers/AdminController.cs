@@ -21,12 +21,10 @@ namespace IMDB.Controllers
         {
 
             var director = db.Directors.ToList();
-            var actor = db.Actors.ToList();
 
             MovieCreationViewModel movieDirectorsViewModel = new MovieCreationViewModel
             {
-                Directors = director,
-                Actors = actor
+                Directors = director
             };
 
             return View(movieDirectorsViewModel);
@@ -58,13 +56,6 @@ namespace IMDB.Controllers
             movieDirectorsViewModel.Movie.MovieIMG = movieImageByteArray;
 
             db.Movies.Add(movieDirectorsViewModel.Movie);
-            db.SaveChanges();
-
-            var actor = movieDirectorsViewModel.MovieActors;
-
-
-            db.MovieActors.Add(movieDirectorsViewModel.MovieActors);
-            //db.MovieActors.Add(movieDirectorsViewModel.Movie.MovieID);
             db.SaveChanges();
 
             return RedirectToAction("NewMovie"); // After create go to NewMovie
