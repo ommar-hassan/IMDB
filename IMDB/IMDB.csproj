@@ -97,6 +97,9 @@
   <ItemGroup>
     <Content Include="Content\CreationForm.css" />
     <Content Include="Global.asax" />
+    <Content Include="Image\background.png" />
+    <Content Include="Image\FormBackGround.png" />
+    <Content Include="Image\IMDb Image.png" />
     <Content Include="MovieImages\DjangoUnchained.jpg" />
     <Content Include="MovieImages\Dr.Strange.jpg" />
     <Content Include="MovieImages\Mirage.jpg" />
@@ -153,6 +156,7 @@
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieActor.cs" />
+    <Compile Include="ViewModels\AssignsViewModel.cs" />
     <Compile Include="ViewModels\MovieCreationViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFavoriteActor.cs" />
@@ -166,6 +170,7 @@
     <Content Include="Views\Admin\NewMovie.cshtml" />
     <Content Include="Views\Admin\NewDirector.cshtml" />
     <Content Include="Views\Admin\NewActor.cshtml" />
+    <Content Include="Views\Admin\MovieToActor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -175,7 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
