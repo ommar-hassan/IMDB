@@ -1,0 +1,58 @@
+﻿@model IMDB.Models.Director
+
+@{
+
+    ViewBag.Title = "Create New Director";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/IMDBStyleSheet.css">
+
+
+</head>
+<body>
+    <div class="IMDB-image">
+        <a href="Home"><img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb logo" /></a>
+    </div>
+    <div class="creation-form">
+        <h1 class="Header">Create New Director</h1>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.FirstName)
+                @Html.TextBoxFor(name => name.FirstName, new { @class = "input" })
+                @Html.ValidationMessageFor(name => name.FirstName)
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.LastName)
+                @Html.TextBoxFor(name => name.LastName, new { @class = "input" })
+                @Html.ValidationMessageFor(name => name.LastName)
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.Age)
+                @Html.TextBoxFor(name => name.Age, new { @class = "input" })
+                @Html.ValidationMessageFor(name => name.Age)
+            </div>
+
+            <div class="text-line">
+                <input type="submit" value="Create" class="button" />
+                @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { id = "BackBtn" })
+            </div>
+
+        }
+    </div>
+
+
+
+
+</body>
+</html>

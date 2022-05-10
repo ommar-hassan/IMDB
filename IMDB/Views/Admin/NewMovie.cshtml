@@ -25,30 +25,10 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="text-line">
-                @Html.LabelFor(text => text.Movie.MovieName)
-                @Html.TextBoxFor(name => name.Movie.MovieName, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.Movie.MovieName)
-            </div>
 
-            <div class="text-line">
-                @Html.LabelFor(text => text.Movie.DirectorID)
-                @Html.DropDownListFor(name => name.Movie.DirectorID, new SelectList(Model.Directors, "DirectorID", "FirstName"), "Select Movie Director", new { @class = "list" })
-                @Html.ValidationMessageFor(name => name.Movie.DirectorID)
-            </div>
 
-            <div class="text-line">
-                @Html.LabelFor(text => text.MovieActors.Actor, "Movie Actors")
-                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor1", new { @class = "list" })
-                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor2", new { @class = "list" })
-                @Html.DropDownListFor(name => name.MovieActors.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Actor3", new { @class = "list" })
-            </div>
 
-            <div class="text-line">
-                @Html.LabelFor(text => text.Movie.MovieIMG)
-                <input type="file" name="movieImage" />
 
-            </div>
 
             <div class="text-line">
                 <input type="submit" value="Create" class="button" />

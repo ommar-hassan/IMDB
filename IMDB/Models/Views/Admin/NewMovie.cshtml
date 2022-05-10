@@ -1,0 +1,45 @@
+﻿@model IMDB.ViewModels.MovieCreationViewModel   
+
+@{
+
+    ViewBag.Title = "Create New Movie";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/IMDBStyleSheet.css">
+    
+
+</head>
+<body>
+    <div class="IMDB-image">
+        <a href="Home"><img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb logo" /></a>
+    </div>
+    <div class="creation-form">
+        <h1 class="Header">Create New Movie</h1>
+
+
+        @using (Html.BeginForm("NewMovie", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+
+
+
+
+            <div class="text-line">
+                <input type="submit" value="Create" class="button" />
+                @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { id = "BackBtn" })
+            </div>
+
+        }
+    </div>
+
+    
+
+
+</body>
+</html>
