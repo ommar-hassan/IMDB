@@ -19,7 +19,6 @@
     <div class="creation-form">
         <h1 class="Header">Create New Movie</h1>
 
-        <!--  Form Array -->
 
         @using (Html.BeginForm("NewMovie", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -28,13 +27,13 @@
             <div class="text-line">
                 @Html.LabelFor(text => text.Movie.MovieName)
                 @Html.TextBoxFor(name => name.Movie.MovieName, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.Movie.MovieName)
+                @Html.ValidationMessageFor(name => name.Movie.MovieName, "", new { @class = "ErrorMSG" })
             </div>
 
             <div class="text-line">
                 @Html.LabelFor(text => text.Movie.DirectorID)
                 @Html.DropDownListFor(name => name.Movie.DirectorID, new SelectList(Model.Directors, "DirectorID", "FirstName"), "Select Movie Director", new { @class = "list" })
-                @Html.ValidationMessageFor(name => name.Movie.DirectorID)
+                @Html.ValidationMessageFor(name => name.Movie.DirectorID, "", new { @class = "ErrorMSG" })
             </div>
 
             <div class="text-line">
@@ -53,8 +52,6 @@
                     @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { @id = "BackBtn" })
                 </div>
             </div>
-
-            <span style="color : white">@ViewBag.SuccessMessage</span>
         }
     </div>
 

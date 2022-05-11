@@ -8,8 +8,6 @@ namespace IMDB.ViewModels
 {
     public class AssignsViewModel
     {
-        public IEnumerable<Director> Directors { get; set; }
-
         public IEnumerable<Movie> Movies { get; set; }
 
         public IEnumerable<Actor> Actors { get; set; }

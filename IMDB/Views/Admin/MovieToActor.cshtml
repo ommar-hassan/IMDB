@@ -14,7 +14,7 @@
 <body>
 
     <div class="IMDB-image">
-        <a href="Home"><img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb logo" /></a>
+        <a href="Home"><img src="~/Image/IMDb Image.png" alt="IMDb logo" /></a>
     </div>
 
     <div class="creation-form">
@@ -41,8 +41,18 @@
                 <input type="submit" value="Assign" class="button" aria-label="File browser example" />
                 @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { @id = "BackBtn" })
             </div>
-            
+
         }
     </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    @if (Model != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("Already Exist");
+            });
+        </script>
+    }
 </body>
 </html>

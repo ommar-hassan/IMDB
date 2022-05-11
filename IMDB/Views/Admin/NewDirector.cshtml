@@ -27,13 +27,13 @@
             <div class="text-line">
                 @Html.LabelFor(text => text.FirstName)
                 @Html.TextBoxFor(name => name.FirstName, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.FirstName)
+                @Html.ValidationMessageFor(name => name.FirstName, "", new { @class = "ErrorMSG" })
             </div>
 
             <div class="text-line">
                 @Html.LabelFor(text => text.LastName)
                 @Html.TextBoxFor(name => name.LastName, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.LastName)
+                @Html.ValidationMessageFor(name => name.LastName, "", new { @class = "ErrorMSG" })
             </div>
 
             <div class="text-line">
@@ -44,7 +44,7 @@
             <div class="text-line">
                 @Html.LabelFor(text => text.Age)
                 @Html.TextBoxFor(name => name.Age, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.Age)
+                @Html.ValidationMessageFor(name => name.Age, "", new { @class = "ErrorMSG" })
             </div>
 
             <div class="text-line">

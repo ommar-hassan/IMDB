@@ -26,6 +26,7 @@ namespace IMDB.Models
         public String LastName { get; set; }
 
         [Display(Name = "Age")]
+        [Range(3, 100, ErrorMessage = "The Director should be 3-100 years old")]
         public String Age { get; set; }
     }
 }
