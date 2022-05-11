@@ -132,6 +132,25 @@
     <Compile Include="Migrations\202204301621095_requiredFields.designer.cs">
       <DependentUpon>202204301621095_requiredFields.cs</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
+=======
+    <Compile Include="Migrations\202205062158029_description.cs" />
+    <Compile Include="Migrations\202205062158029_description.designer.cs">
+      <DependentUpon>202205062158029_description.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205071936023_movieActorPK.cs" />
+    <Compile Include="Migrations\202205071936023_movieActorPK.designer.cs">
+      <DependentUpon>202205071936023_movieActorPK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205090805510_Images.cs" />
+    <Compile Include="Migrations\202205090805510_Images.designer.cs">
+      <DependentUpon>202205090805510_Images.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205101821585_Annotation.cs" />
+    <Compile Include="Migrations\202205101821585_Annotation.designer.cs">
+      <DependentUpon>202205101821585_Annotation.cs</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageConversion.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -180,6 +199,21 @@
     <EmbeddedResource Include="Migrations\202204301621095_requiredFields.resx">
       <DependentUpon>202204301621095_requiredFields.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< Updated upstream
+=======
+    <EmbeddedResource Include="Migrations\202205062158029_description.resx">
+      <DependentUpon>202205062158029_description.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205071936023_movieActorPK.resx">
+      <DependentUpon>202205071936023_movieActorPK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205090805510_Images.resx">
+      <DependentUpon>202205090805510_Images.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205101821585_Annotation.resx">
+      <DependentUpon>202205101821585_Annotation.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> Stashed changes
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
