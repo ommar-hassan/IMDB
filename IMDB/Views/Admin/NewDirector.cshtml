@@ -9,8 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="~/Content/IMDBStyleSheet.css">
-
+    <link href="~/Content/CreationForm.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -21,26 +20,36 @@
         <h1 class="Header">Create New Director</h1>
 
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("NewDirector", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
             <div class="text-line">
                 @Html.LabelFor(text => text.FirstName)
                 @Html.TextBoxFor(name => name.FirstName, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.FirstName)
+                @Html.ValidationMessageFor(name => name.FirstName, "", new { @class = "ErrorMSG" })
             </div>
 
             <div class="text-line">
                 @Html.LabelFor(text => text.LastName)
                 @Html.TextBoxFor(name => name.LastName, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.LastName)
+                @Html.ValidationMessageFor(name => name.LastName, "", new { @class = "ErrorMSG" })
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.Description)
+                @Html.TextAreaFor(name => name.Description, new { @class = "input" })
             </div>
 
             <div class="text-line">
                 @Html.LabelFor(text => text.Age)
                 @Html.TextBoxFor(name => name.Age, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.Age)
+                @Html.ValidationMessageFor(name => name.Age, "", new { @class = "ErrorMSG" })
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.DirectorIMG)
+                <input type="file" name="directorImage" class="file-upload-field" />
             </div>
 
             <div class="text-line">

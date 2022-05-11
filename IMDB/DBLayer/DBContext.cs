@@ -34,5 +34,10 @@ namespace IMDB
 
         public DbSet<UserFavoriteMovie> UserFavoriteMovies { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MovieActor>().HasKey(movieActorID => new { movieActorID.ActorID, movieActorID.MovieID });
+        }
+
     }
 }    

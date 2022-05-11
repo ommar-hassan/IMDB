@@ -11,10 +11,5 @@ namespace IMDB.ViewModels
         public Movie Movie { get; set; }
 
         public IEnumerable<Director> Directors { get; set; }
-
-        public MovieActor MovieActors { get; set; }
-
-        public IEnumerable<Actor> Actors { get; set; }
-
     }
 }
