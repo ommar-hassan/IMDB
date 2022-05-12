@@ -23,12 +23,10 @@ namespace IMDB.Controllers
         {
 
             var director = db.Directors.ToList();
-            var actor = db.Actors.ToList();
 
             MovieCreationViewModel movieDirectorsViewModel = new MovieCreationViewModel
             {
-                Directors = director,
-                Actors = actor
+                Directors = director
             };
 
             return View(movieDirectorsViewModel);
@@ -39,7 +37,10 @@ namespace IMDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult NewMovie(HttpPostedFileBase movieImage, MovieCreationViewModel movieDirectorsViewModel)
         {
-
+            if (movieImage == null)
+            {
+                return HttpNotFound();
+            }
 
             if (!ModelState.IsValid)
             {
@@ -57,13 +58,7 @@ namespace IMDB.Controllers
             db.Movies.Add(movieDirectorsViewModel.Movie);
             db.SaveChanges();
 
-            var actor = movieDirectorsViewModel.MovieActors;
-
-
-            db.MovieActors.Add(movieDirectorsViewModel.MovieActors);
-            //db.MovieActors.Add(movieDirectorsViewModel.Movie.MovieID);
-            db.SaveChanges();
-
+            TempData["Message"] = "Created Successfully";
             return RedirectToAction("NewMovie"); // After create go to NewMovie
         }
 
@@ -77,12 +72,24 @@ namespace IMDB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewDirector(Director director) {
+        public ActionResult NewDirector(HttpPostedFileBase directorImage, Director director)
+        {
+
+            if (directorImage == null)
+            {
+                return HttpNotFound();
+            }
 
             if (ModelState.IsValid)
             {
+                MemoryStream target = new MemoryStream();
+                directorImage.InputStream.CopyTo(target);
+                byte[] directorImageByteArray = target.ToArray();
+                director.DirectorIMG = directorImageByteArray;
+
                 db.Directors.Add(director);
                 db.SaveChanges();
+                TempData["Message"] = "Created Successfully";
                 return RedirectToAction("NewDirector");
             }
 
@@ -99,18 +106,78 @@ namespace IMDB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewActor(Actor Actor)
+        public ActionResult NewActor(HttpPostedFileBase actorImage, Actor actor)
         {
+            if (actorImage == null)
+            {
+                return HttpNotFound();
+            }
 
             if (ModelState.IsValid)
             {
-                db.Actors.Add(Actor);
+                MemoryStream target = new MemoryStream();
+                actorImage.InputStream.CopyTo(target);
+                byte[] actorImageByteArray = target.ToArray();
+                actor.ActorIMG = actorImageByteArray;
+
+                db.Actors.Add(actor);
                 db.SaveChanges();
+                ViewBag.SuccessMessage = "Created successfully!";
                 return RedirectToAction("NewActor");
             }
 
             return View("NewActor");
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult MovieToActor()
+        {
+
+            var actor = db.Actors.ToList();
+            var movie = db.Movies.ToList();
+
+            AssignsViewModel movieAndActor = new AssignsViewModel()
+            {
+                Actors = actor,
+                Movies = movie
+            };
+
+
+            return View(movieAndActor);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MovieToActor(AssignsViewModel movieAndActor)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                var actor = db.Actors.ToList();
+                movieAndActor.Actors = actor;
+
+                var movie = db.Movies.ToList();
+                movieAndActor.Movies = movie;
+
+                return View(/*  " View Name " , */ movieAndActor);
+            }
+
+            if (db.MovieActors.Where(model => model.ActorID == movieAndActor.MovieActor.ActorID && model.MovieID == movieAndActor.MovieActor.MovieID).Count() > 0)
+            {
+
+                TempData["Message"] = "This Actor is already Assigned";
+
+                return RedirectToAction("MovieToActor");
+
+            }
+            db.MovieActors.Add(movieAndActor.MovieActor);
+            db.SaveChanges();
+
+            return RedirectToAction("NewMovie"); // "MovieDetails View"
+        }
+
 
         // update Actor
 
