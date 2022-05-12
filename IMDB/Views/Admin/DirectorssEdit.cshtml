@@ -2,7 +2,7 @@
 
 @{
 
-    ViewBag.Title = "Create New Director";
+    ViewBag.Title = "Update Director";
 }
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
         <a href="Home"><img src="https://images-na.ssl-images-amazon.com/images/G/01/imdb/authportal/images/www_imdb_logo._CB667618033_.png" alt="IMDb logo" /></a>
     </div>
     <div class="creation-form">
-        <h1 class="Header">Create New Director</h1>
+        <h1 class="Header">Update Director</h1>
 
 
         @using (Html.BeginForm())
@@ -27,30 +27,30 @@
 
             <div class="text-line">
                 @Html.LabelFor(text => text.FirstName)
-                @Html.TextBoxFor(name => name.FirstName, new { @class = "input" })
+                @Html.EditorFor(name => name.FirstName, new { @class = "input" })
                 @Html.ValidationMessageFor(name => name.FirstName)
             </div>
 
             <div class="text-line">
                 @Html.LabelFor(text => text.LastName)
-                @Html.TextBoxFor(name => name.LastName, new { @class = "input" })
+                @Html.EditorFor(name => name.LastName, new { @class = "input" })
                 @Html.ValidationMessageFor(name => name.LastName)
             </div>
 
             <div class="text-line">
                 @Html.LabelFor(text => text.Description)
-                @Html.TextAreaFor(name => name.Description, new { @class = "input" })
+                @Html.EditorFor(name => name.Description, new { @class = "input" })
                 @Html.ValidationMessageFor(name => name.Description)
             </div>
 
             <div class="text-line">
                 @Html.LabelFor(text => text.Age)
-                @Html.TextBoxFor(name => name.Age, new { @class = "input" })
+                @Html.EditorFor(name => name.Age, new { @class = "input" })
                 @Html.ValidationMessageFor(name => name.Age)
             </div>
 
             <div class="text-line">
-                <input type="submit" value="Create" class="button" />
+                <input type="submit" value="update" class="button" />
                 @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { id = "BackBtn" })
             </div>
 
@@ -62,3 +62,4 @@
 
 </body>
 </html>
+

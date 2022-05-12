@@ -1,0 +1,136 @@
+﻿@model IMDB.Models.Director
+@{
+    ViewData["Title"] = "Director Details";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio website</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/ActorStyle.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<header>
+    <a href="#" class="logo">
+        <i>IMDb</i>
+    </a>
+    <ul class="navbar">
+        <li><a href="#home" class="home-active">Home</a></li>
+        <li><a href="#movies">Movie</a></li>
+        <li><a href="#actors">Actors</a></li>
+        <li><a href="#Directors">Directors</a></li>
+    </ul>
+    <input type="text" placeholder="Search..">
+    <a href="#" class="btn">Sign In</a>
+
+</header>
+<body>
+    <!----hero Section start---->
+    <!----About section start---->
+    <section class="about">
+        <div class="main">
+            <img src="img/RR.jpg">
+            <div class="about-text">
+                <h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
+                <h5>Actor <span>& Director</span></h5>
+                <p>@Html.DisplayFor(model => model.Description)</p>
+                <form class="rating">
+                    <label>
+                        <input type="radio" name="stars" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="stars" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="stars" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="stars" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="stars" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="service">
+        <div class="title">
+            <h2>Movies</h2>
+        </div>
+        <div class="box">
+            <div class="card">
+                <div class="content">
+                    <a href="" target="_blank">
+                        <img src="img/deadpoolcover.jpg" class="movie">
+                        <div class="content-overlay"></div>
+                        <div class="content-details fadeIn-bottom">
+                            <h3 class="content-title">Go to movie</h3>
+                            <p class="content-text">Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <a href="" target="_blank">
+                        <img src="img/freeGuy.jpg" class="movie">
+                        <div class="content-overlay"></div>
+                        <div class="content-details fadeIn-bottom">
+                            <h3 class="content-title">Go to movie</h3>
+                            <p class="content-text">a bank teller who discovers he is actually a background player in an open-world video game, decides to become the hero of his own story... one he rewrites himself. Now in a world where there are no limits, he is determined to be the guy who saves his world his way... before it is too late.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="content">
+                    <a href="" target="_blank">
+                        <img src="img/hitmansBodyguar.jpg" class="movie">
+                        <div class="content-overlay"></div>
+                        <div class="content-details fadeIn-bottom">
+                            <h3 class="content-title">Go to movie</h3>
+                            <p class="content-text">The film follows a bodyguard (Reynolds) who must protect a convicted hitman (Jackson), who's on his way to testify at the International Criminal Court against a sadistic, Eastern European dictator (Oldman)</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!------footer start--------->
+    <footer>
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+        </div>
+
+    </footer>
+</body>
+</html>
+

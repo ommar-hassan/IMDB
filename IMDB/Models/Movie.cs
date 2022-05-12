@@ -14,7 +14,7 @@ namespace IMDB.Models
 
         [Required(ErrorMessage = "*" )]
         [Display(Name = "Movie Name")]
-        public String MovieName { get; set; }
+        public String MovieName { get; set; } 
 
         [Display(Name = "Movie Image")]
         public Byte[] MovieIMG { get; set; }
@@ -26,4 +26,5 @@ namespace IMDB.Models
         [Display(Name = "Movie Director")]
         public int? DirectorID { get; set; }
     }
+    
 }

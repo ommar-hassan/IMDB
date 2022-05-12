@@ -8,18 +8,26 @@ namespace IMDB.Models
 {
     public class Actor
     {
+        internal List<Actor> actorData;
+
         [Key]
         public int ActorID { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Display(Name = "First Name")]
+        [Display(Name = "FirstName")]
         public String FirstName { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Last Name")]
+        [Display(Name = "LastName")]
         public String LastName { get; set; }
+
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "Description")]
+        public String Description { get; set; }
 
         [Display(Name = "Age")]
         public String Age { get; set; }
+
+        public Byte[] ActorIMG { get; set; }
     }
 }
