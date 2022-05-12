@@ -38,21 +38,16 @@
             </div>
 
             <div class="text-line">
+                <h4 style="color:red;">@TempData["Message"]</h4>
                 <input type="submit" value="Assign" class="button" aria-label="File browser example" />
                 @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { @id = "BackBtn" })
             </div>
-
+            
         }
     </div>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    @if (Model != null)
-    {
-        <script type="text/javascript">
-            $(function () {
-                alert("Already Exist");
-            });
-        </script>
-    }
+    
+    
+
 </body>
 </html>

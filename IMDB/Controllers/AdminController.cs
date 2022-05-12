@@ -58,7 +58,7 @@ namespace IMDB.Controllers
             db.Movies.Add(movieDirectorsViewModel.Movie);
             db.SaveChanges();
 
-            ViewBag.SucessMessage = movieDirectorsViewModel.Movie.MovieName +  "Has been created Successfully!";
+            TempData["Message"] = "Created Successfully";
             return RedirectToAction("NewMovie"); // After create go to NewMovie
         }
 
@@ -89,6 +89,8 @@ namespace IMDB.Controllers
 
                 db.Directors.Add(director);
                 db.SaveChanges();
+
+                TempData["Message"] = "Created Successfully";
                 return RedirectToAction("NewDirector");
             }
 
@@ -166,8 +168,11 @@ namespace IMDB.Controllers
 
             if ( db.MovieActors.Where( model => model.ActorID == movieAndActor.MovieActor.ActorID && model.MovieID == movieAndActor.MovieActor.MovieID ).Count() > 0 )
             {
-                
+
+                TempData["Message"] = "This Actor is already Assigned";
+
                 return RedirectToAction("MovieToActor");
+
             }
             db.MovieActors.Add(movieAndActor.MovieActor);
             db.SaveChanges();
