@@ -100,7 +100,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\IMDBStyleSheet.css" />
+    <Content Include="Content\CreationForm.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -179,6 +179,7 @@
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieActor.cs" />
+    <Compile Include="ViewModels\AssignsViewModel.cs" />
     <Compile Include="ViewModels\MovieCreationViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFavoriteActor.cs" />
@@ -200,6 +201,7 @@
     <Content Include="Views\Admin\ActorsEdit.cshtml" />
     <Content Include="Views\Profile\MovieList.cshtml" />
     <Content Include="Views\Admin\DirectorssEdit.cshtml" />
+    <Content Include="Views\Admin\MovieToActor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
