@@ -42,6 +42,12 @@
             </div>
 
             <div class="text-line">
+                @Html.LabelFor(text => text.Description)
+                @Html.TextAreaFor(name => name.Description, new { @class = "input" })
+                @Html.ValidationMessageFor(name => name.Description)
+            </div>
+
+            <div class="text-line">
                 @Html.LabelFor(text => text.Age)
                 @Html.TextBoxFor(name => name.Age, new { @class = "input" })
                 @Html.ValidationMessageFor(name => name.Age , "" , new { @class = "ErrorMSG" })
