@@ -1,4 +1,5 @@
 ﻿using IMDB.Models;
+using IMDB.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,25 @@ namespace IMDB.Controllers
             return View(directorView);
         }
 
+        public ActionResult MovieProfile(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(x => x.MovieID == id);
+            if (movie == null)
+                return HttpNotFound();
+
+            var movieActors = _context.MovieActors.Where(model => model.MovieID == id);
+
+            var director = movie.Director;
+            MovieProfileViewModel profile = new MovieProfileViewModel()
+            {
+                Movie = movie,
+                MovieActor = movieActors,
+                Director = director
+             
+            };
+            
+            return View(profile);
+        }
 
     }
 }
