@@ -1,0 +1,24 @@
+﻿.about img {
+    height: auto;
+    width: 30%;
+}
+
+.about-text h2 {
+    color: goldenrod;
+    font-size: 240%;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 4px black;
+}
+
+.text-info{
+    color:white;
+    font-family : 'DecoType Thuluth';
+    margin-top : 1%;
+    margin-left : 5%;
+}
+
+h4 {
+    color: goldenrod;
+    line-height: 170%;
+    text-shadow: 3px 3px 4px black;
+}
