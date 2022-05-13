@@ -1,0 +1,111 @@
+﻿@model IMDB.ViewModels.MovieProfileViewModel
+@{
+    ViewData["Title"] = "Director Details";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio website</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/ActorStyle.css">
+    <link href="~/Content/MovieProfile.css" rel="stylesheet" />
+    <link href="~/Content/Comment.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">
+            <i>IMDb</i>
+        </a>
+        <ul class="navbar">
+            <li><a href="#home" class="home-active">Home</a></li>
+            <li><a href="#movies">Movie</a></li>
+            <li><a href="#actors">Actors</a></li>
+            <li><a href="#Directors">Directors</a></li>
+        </ul>
+        <input type="text" placeholder="Search..">
+        <a href="#" class="btn">Sign In</a>
+
+    </header>
+    <!----hero Section start---->
+    <!----About section start---->
+    <section class="about">
+        <div class="main">
+            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Movie.MovieIMG))" alt="@Model.Movie.MovieName" />
+            <div class="about-text">
+                <h2>@Html.DisplayFor(model => model.Movie.MovieName)</h2>
+                <hr />
+                <p>@Html.DisplayFor(model => model.Movie.Description)</p>
+
+                <h4>Actors</h4>
+                <hr />
+                @foreach (var item in Model.MovieActor)
+                {
+                    <div class="text-info">
+                        <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Actor.ActorIMG))" alt="@item.Actor.FirstName" style="width : 45px ; border-radius : 40% ; height : auto" />
+                        @Html.ActionLink(item.Actor.FirstName + " " + item.Actor.LastName, "ActorProfile", new { id = item.ActorID }, new { @class = "text-info" })
+                    </div>
+                }
+                <br /><br />
+                <h4>Director</h4>
+                <hr />
+                <div class="text-info">
+                    @Html.ActionLink(Model.Director.FirstName + " " + Model.Director.LastName, "DirectorProfile", new { id = Model.Director.DirectorID }, new { @class = "text-info" })
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="content-item" id="comments">
+        <div class="container">
+            <br />
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="comment">
+                        <form>
+                            <h3 class="pull-left">New Comment</h3>
+
+                            <fieldset>
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                                        <textarea class="form-control" id="message" placeholder="Your message" required=""></textarea>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-normal pull-right">Submit</button><br />
+                        </form>
+                    
+                    <!-- COMMENT 1 - START -->
+                        <div class="media">
+                            <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
+                            <div class="media-body">
+                                <h4 class="media-heading">John Doe</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- COMMENT 1 - END -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!------footer start--------->
+    <footer>
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+        </div>
+
+    </footer>
+</body>
+</html>
