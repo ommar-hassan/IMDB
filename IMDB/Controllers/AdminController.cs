@@ -37,10 +37,6 @@ namespace IMDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult NewMovie(HttpPostedFileBase movieImage, MovieCreationViewModel movieDirectorsViewModel)
         {
-            if (movieImage == null)
-            {
-                return HttpNotFound();
-            }
 
             if (!ModelState.IsValid)
             {
@@ -49,11 +45,14 @@ namespace IMDB.Controllers
 
                 return View("NewMovie",movieDirectorsViewModel);
             }
-            MemoryStream target = new MemoryStream();
-            movieImage.InputStream.CopyTo(target);
-            byte[] movieImageByteArray = target.ToArray();
+            if (movieImage != null)
+            {
+                MemoryStream target = new MemoryStream();
+                movieImage.InputStream.CopyTo(target);
+                byte[] movieImageByteArray = target.ToArray();
 
-            movieDirectorsViewModel.Movie.MovieIMG = movieImageByteArray;
+                movieDirectorsViewModel.Movie.MovieIMG = movieImageByteArray;
+            }
 
             db.Movies.Add(movieDirectorsViewModel.Movie);
             db.SaveChanges();
@@ -75,17 +74,15 @@ namespace IMDB.Controllers
         public ActionResult NewDirector(HttpPostedFileBase directorImage, Director director)
         {
 
-            if (directorImage == null)
-            {
-                return HttpNotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                MemoryStream target = new MemoryStream();
-                directorImage.InputStream.CopyTo(target);
-                byte[] directorImageByteArray = target.ToArray();
-                director.DirectorIMG = directorImageByteArray;
+                if (directorImage != null)
+                {           
+                    MemoryStream target = new MemoryStream();
+                    directorImage.InputStream.CopyTo(target);
+                    byte[] directorImageByteArray = target.ToArray();
+                    director.DirectorIMG = directorImageByteArray;
+                }
 
                 db.Directors.Add(director);
                 db.SaveChanges();
@@ -108,17 +105,17 @@ namespace IMDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult NewActor(HttpPostedFileBase actorImage, Actor actor)
         {
-            if (actorImage == null)
-            {
-                return HttpNotFound();
-            }
+            
 
             if (ModelState.IsValid)
             {
+                if (actorImage != null)
+                {
                 MemoryStream target = new MemoryStream();
                 actorImage.InputStream.CopyTo(target);
                 byte[] actorImageByteArray = target.ToArray();
                 actor.ActorIMG = actorImageByteArray;
+                }
 
                 db.Actors.Add(actor);
                 db.SaveChanges();
