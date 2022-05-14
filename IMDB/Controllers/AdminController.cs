@@ -272,20 +272,30 @@ namespace IMDB.Controllers
         }
 
         [HttpPost]
-        public ActionResult DirectorssEdit(Director oldDirector)
+        public ActionResult DirectorsEdit(Director oldDirector, HttpPostedFileBase image)
         {
+
 
             if (ModelState.IsValid)
             {
+                MemoryStream target = new MemoryStream();
+                image.InputStream.CopyTo(target);
+                byte[] directorImageByteArray = target.ToArray();           //oldImage convertor
+                oldDirector.DirectorIMG = directorImageByteArray;
+
                 Director newDirector = new Director();
                 newDirector.DirectorID = (int)Session["DirectorID"];
-                newDirector = db.Directors.SingleOrDefault(a => a.DirectorID == newDirector.DirectorID);
+                newDirector = db.Directors.SingleOrDefault(a => a.DirectorID == newDirector.DirectorID);  
 
                 newDirector.FirstName = oldDirector.FirstName;
                 newDirector.LastName = oldDirector.LastName;
                 newDirector.Description = oldDirector.Description;
                 newDirector.Age = oldDirector.Age;
-                // actorView.ActorIMG = tempActor.ActorIMG;
+                newDirector.DirectorIMG = oldDirector.DirectorIMG;
+
+                
+                
+
 
                 db.Entry(newDirector).State = EntityState.Modified;
                 db.SaveChanges();
@@ -293,6 +303,21 @@ namespace IMDB.Controllers
             }
 
             return View();
+        }
+        public ActionResult DeleteDriector(int id)
+        {
+            var director = db.Directors.SingleOrDefault(a => a.DirectorID == id);
+            foreach (var item in db.Movies)
+            {
+                if(item.DirectorID == id)
+                {
+                    item.DirectorID = null;
+                }
+
+            }
+            db.Directors.Remove(director);
+            db.SaveChanges();           
+            return RedirectToAction("DirectorList", "Profile");
         }
     }
  
