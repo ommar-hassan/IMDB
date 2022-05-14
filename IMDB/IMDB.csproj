@@ -142,33 +142,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204291300227_initialization.cs" />
-    <Compile Include="Migrations\202204291300227_initialization.designer.cs">
-      <DependentUpon>202204291300227_initialization.cs</DependentUpon>
+    <Compile Include="Migrations\202205131853388_fixErros.cs" />
+    <Compile Include="Migrations\202205131853388_fixErros.designer.cs">
+      <DependentUpon>202205131853388_fixErros.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204300938447_foreignKeys.cs" />
-    <Compile Include="Migrations\202204300938447_foreignKeys.designer.cs">
-      <DependentUpon>202204300938447_foreignKeys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204301110352_FixingErrors.cs" />
-    <Compile Include="Migrations\202204301110352_FixingErrors.designer.cs">
-      <DependentUpon>202204301110352_FixingErrors.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202204301621095_requiredFields.cs" />
-    <Compile Include="Migrations\202204301621095_requiredFields.designer.cs">
-      <DependentUpon>202204301621095_requiredFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205051406546_ProfileImage.cs" />
-    <Compile Include="Migrations\202205051406546_ProfileImage.designer.cs">
-      <DependentUpon>202205051406546_ProfileImage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205061825135_Description.cs" />
-    <Compile Include="Migrations\202205061825135_Description.designer.cs">
-      <DependentUpon>202205061825135_Description.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202205061929107_DirectorDescription.cs" />
-    <Compile Include="Migrations\202205061929107_DirectorDescription.designer.cs">
-      <DependentUpon>202205061929107_DirectorDescription.cs</DependentUpon>
+    <Compile Include="Migrations\202205131948261_fixingDelete.cs" />
+    <Compile Include="Migrations\202205131948261_fixingDelete.designer.cs">
+      <DependentUpon>202205131948261_fixingDelete.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageConversion.cs" />
@@ -179,7 +159,9 @@
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieActor.cs" />
+    <Compile Include="ViewModels\Actor_Movie.cs" />
     <Compile Include="ViewModels\AssignsViewModel.cs" />
+    <Compile Include="ViewModels\Director_Movie.cs" />
     <Compile Include="ViewModels\MovieCreationViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFavoriteActor.cs" />
@@ -199,9 +181,9 @@
     <Content Include="Views\Profile\DirectorList.cshtml" />
     <Content Include="Views\View\DirectorProfile.cshtml" />
     <Content Include="Views\Admin\ActorsEdit.cshtml" />
-    <Content Include="Views\Profile\MovieList.cshtml" />
-    <Content Include="Views\Admin\DirectorssEdit.cshtml" />
+    <Content Include="Views\Admin\DirectorsEdit.cshtml" />
     <Content Include="Views\Admin\MovieToActor.cshtml" />
+    <Content Include="Views\Profile\Movie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,26 +203,11 @@
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202204291300227_initialization.resx">
-      <DependentUpon>202204291300227_initialization.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205131853388_fixErros.resx">
+      <DependentUpon>202205131853388_fixErros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204300938447_foreignKeys.resx">
-      <DependentUpon>202204300938447_foreignKeys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204301110352_FixingErrors.resx">
-      <DependentUpon>202204301110352_FixingErrors.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204301621095_requiredFields.resx">
-      <DependentUpon>202204301621095_requiredFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205051406546_ProfileImage.resx">
-      <DependentUpon>202205051406546_ProfileImage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205061825135_Description.resx">
-      <DependentUpon>202205061825135_Description.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205061929107_DirectorDescription.resx">
-      <DependentUpon>202205061929107_DirectorDescription.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205131948261_fixingDelete.resx">
+      <DependentUpon>202205131948261_fixingDelete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

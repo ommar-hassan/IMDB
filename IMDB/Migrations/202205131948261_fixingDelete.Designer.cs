@@ -7,13 +7,13 @@ namespace IMDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ProfileImage : IMigrationMetadata
+    public sealed partial class fixingDelete : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProfileImage));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixingDelete));
         
         string IMigrationMetadata.Id
         {
-            get { return "202205051406546_ProfileImage"; }
+            get { return "202205131948261_fixingDelete"; }
         }
         
         string IMigrationMetadata.Source
