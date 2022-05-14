@@ -20,8 +20,7 @@
     <div class="creation-form">
         <h1 class="Header">Update Director</h1>
 
-
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("DirectorsEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" })) 
         {
             @Html.AntiForgeryToken()
 
@@ -47,6 +46,10 @@
                 @Html.LabelFor(text => text.Age)
                 @Html.EditorFor(name => name.Age, new { @class = "input" })
                 @Html.ValidationMessageFor(name => name.Age)
+            </div>
+            <div class="text-line">
+                @Html.LabelFor(text => text.DirectorIMG)
+                <input type="file" name="image" class="file-upload-field" />
             </div>
 
             <div class="text-line">
