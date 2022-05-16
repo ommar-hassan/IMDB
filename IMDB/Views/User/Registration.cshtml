@@ -1,11 +1,11 @@
 ﻿@model IMDB.Models.User
 
 @{
-    ViewBag.Title = "Registration";
+    Layout = null;
 }
 
-<h2>Registration</h2>
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -21,7 +21,7 @@
         <h1 class="Header">REGISTRATION</h1>
 
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Registration", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -44,6 +44,14 @@
                 @Html.ValidationMessageFor(name => name.Email)
             </div>
 
+
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.ProfileIMG)
+                <input type="file" name="userImage" class="file-upload-field" />
+            </div>
+
+
             <div class="text-line">
                 @Html.LabelFor(text => text.Password)
                 @Html.PasswordFor(name => name.Password, new { @class = "input" })
@@ -51,11 +59,6 @@
 
             </div>
 
-            <div class="text-line">
-                @Html.LabelFor(text => text.RoleID)
-                @Html.TextBoxFor(name => name.RoleID, new { @class = "input" })
-                @Html.ValidationMessageFor(name => name.RoleID)
-            </div>
             <div class="text-line">
                 <input type="submit" value="Create" class="button" />
                 @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { id = "BackBtn" })
@@ -67,4 +70,4 @@
 
 
 </body>
-</html>
+</html>0

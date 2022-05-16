@@ -1,11 +1,11 @@
 ﻿@model IMDB.Models.User
 
 @{
-    ViewBag.Title = "Login";
+    Layout = null;
 }
 
-<h2>LOGIN</h2>
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -25,7 +25,7 @@
         {
             @Html.AntiForgeryToken()
 
-           
+
             <div class="text-line">
                 @Html.LabelFor(text => text.Email)
                 @Html.TextBoxFor(name => name.Email, new { @class = "input" })
@@ -34,13 +34,21 @@
 
             <div class="text-line">
                 @Html.LabelFor(text => text.Password)
-                @Html.TextBoxFor(name => name.Password, new { @class = "input" })
+                @Html.PasswordFor(name => name.Password, new { @class = "input" })
                 @Html.ValidationMessageFor(name => name.Password)
+
             </div>
 
             <div class="text-line">
-                <input type="submit" value="Create" class="button" />
+                <input type="submit" value="LOGIN" class="button" />
                 @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { id = "BackBtn" })
+            </div>
+
+            <div>
+                <p class="text">
+                    Already have an account?
+                    @Html.ActionLink("Sign-In", "Registration")
+                </p>
             </div>
         }
     </div>

@@ -38,7 +38,13 @@ namespace IMDB.Models
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "1 for admin   0 for user")]
         [Display(Name = "RoleID")]
-        public int RoleID { get; set; }
+        public UserRoleID RoleID { get; set; }
+
+        public enum UserRoleID
+        {
+            User,
+            Admin
+        }
 
 
     }
