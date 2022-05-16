@@ -22,11 +22,9 @@
         </a>
         <ul class="navbar">
             <li><a href="#home" class="home-active">Home</a></li>
-            <li><a href="#movies">Movie</a></li>
-            <li><a href="#actors">Actors</a></li>
-            <li><a href="#Directors">Directors</a></li>
+            <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
         </ul>
-        <input type="text" placeholder="Search..">
+
         <a href="#" class="btn">Sign In</a>
 
     </header>

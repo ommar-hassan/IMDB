@@ -1,0 +1,89 @@
+﻿@model IMDB.ViewModels.Search
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/ActorListStyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/search.css" rel="stylesheet" />
+    <!-- Style -->
+    <link href="~/IMDb.CSS/Search.css" rel="stylesheet" />
+    <title>Search</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <i>IMDb</i>
+        </a>
+        <ul class="navbar">
+            <li><a href="#home" class="home-active">Home</a></li>
+            <li>@Html.ActionLink("Movies", "Movie")</li>
+            <li>@Html.ActionLink("Actors", "ActorList")</li>
+            <li>@Html.ActionLink("Directors", "DirectorList")</li>
+            <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
+        </ul>
+        <a href="#" class="btn">Sign In</a>
+        </header>
+        <div class="content">
+            <div class="container">
+                <h2 class="mb-5">IMDb Search</h2>
+                @using (Html.BeginForm())
+                {
+                    <input class="input" type="text" name="searchValue" />
+                    <input type="submit" value="Search" />
+                }
+                <div class="container">
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Type</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Age</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Actors)
+                            {
+
+                                <tr>
+                                    <td class="align-middle">Actor</td>
+                                    <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "ActorProfile", new { controller = "View", id = item.ActorID })</td>
+                                    <td class="align-middle">@item.Age</td>
+
+                                </tr>
+                            }
+                            @foreach (var item in Model.Directors)
+                            {
+                                <tr>
+                                    <td class="align-middle">Director</td>
+                                    <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "DirectorProfile", new { controller = "View", id = item.DirectorID })</td>
+                                    <td class="align-middle">@item.Age</td>
+
+                                </tr>
+                            }
+                            @foreach (var item in Model.Movies)
+                            {
+
+                                <tr>
+                                    <td class="align-middle">Movie</td>
+                                    <td class="align-middle">@Html.ActionLink(@item.MovieName, "MovieProfile", new { id = item.MovieName })</td>
+                                    <td class="align-middle"></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+</body>
+</html>

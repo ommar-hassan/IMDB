@@ -23,11 +23,14 @@
         </a>
         <ul class="navbar">
             <li><a href="#home" class="home-active">Home</a></li>
-            <li><a href="#movies">Movie</a></li>
-            <li><a href="#actors">Actors</a></li>
-            <li><a href="#Directors">Directors</a></li>
+            <li>@Html.ActionLink("Movies", "Movie")</li>
+            <li>@Html.ActionLink("Actors", "ActorList")</li>
+            <li>@Html.ActionLink("Directors", "DirectorList")</li>
+            <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
         </ul>
-        <input type="text" placeholder="Search..">
+        <form method="get" asp-action="Search">
+            <input type="search" placeholder="Search.." value="@ViewData["input"]" name="input">
+        </form>
         <a href="#" class="btn">Sign In</a>
 
     </header>
