@@ -24,7 +24,7 @@ namespace IMDB.Models
         [Display(Name = "Description")]
         public String Description { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        //[Required(ErrorMessage = "*")]
         [ForeignKey("Director")]
         [Display(Name = "Movie Director")]
         public int DirectorID { get; set; }

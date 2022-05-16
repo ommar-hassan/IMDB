@@ -8,7 +8,7 @@ using System.IO;
 using System.Drawing;
 using IMDB.ViewModels;
 using System.Data.Entity;
-
+using System.Threading.Tasks;
 
 namespace IMDB.Controllers
 {
@@ -43,7 +43,7 @@ namespace IMDB.Controllers
                 var director = db.Directors.ToList();
                 movieDirectorsViewModel.Directors = director;
 
-                return View("NewMovie",movieDirectorsViewModel);
+                return View("NewMovie", movieDirectorsViewModel);
             }
             if (movieImage != null)
             {
@@ -183,10 +183,10 @@ namespace IMDB.Controllers
         {
             if (id != null)
             {
-                var actor = db.Actors.SingleOrDefault(a => a.ActorID == id); 
+                var actor = db.Actors.SingleOrDefault(a => a.ActorID == id);
                 if (actor == null)      //checking integirty  
                 {
-                    return HttpNotFound(); 
+                    return HttpNotFound();
                 }
                 Actor ActorData = new Actor         // passing required Actor Data for the update
                 {
@@ -195,10 +195,10 @@ namespace IMDB.Controllers
                     LastName = actor.LastName,
                     Description = actor.Description,
                     Age = actor.Age
-                    
+
                 };
                 Session["ActorID"] = ActorData.ActorID;
-                  return View(ActorData);
+                return View(ActorData);
             }
 
             else
@@ -207,7 +207,7 @@ namespace IMDB.Controllers
             }
         }
 
-       [HttpPost]
+        [HttpPost]
         public ActionResult ActorsEdit(Actor oldActor)
         {
 
@@ -215,13 +215,13 @@ namespace IMDB.Controllers
             {
                 Actor newActor = new Actor();
                 newActor.ActorID = (int)Session["ActorID"];
-                 newActor = db.Actors.SingleOrDefault(a => a.ActorID == newActor.ActorID);
+                newActor = db.Actors.SingleOrDefault(a => a.ActorID == newActor.ActorID);
 
                 newActor.FirstName = oldActor.FirstName;
                 newActor.LastName = oldActor.LastName;
                 newActor.Description = oldActor.Description;
                 newActor.Age = oldActor.Age;
-               // actorView.ActorIMG = tempActor.ActorIMG;
+                // actorView.ActorIMG = tempActor.ActorIMG;
 
                 db.Entry(newActor).State = EntityState.Modified;
                 db.SaveChanges();
@@ -230,13 +230,13 @@ namespace IMDB.Controllers
 
             return View();
         }
-        
+
         public ActionResult DeleteActor(int id)
         {
             var actor = db.Actors.SingleOrDefault(a => a.ActorID == id);
             db.Actors.Remove(actor);
             db.SaveChanges();
-            return RedirectToAction("ActorList","Profile");
+            return RedirectToAction("ActorList", "Profile");
         }
 
         [HttpGet]
@@ -269,11 +269,17 @@ namespace IMDB.Controllers
         }
 
         [HttpPost]
-        public ActionResult DirectorssEdit(Director oldDirector)
+        public ActionResult DirectorsEdit(Director oldDirector, HttpPostedFileBase image)
         {
+
 
             if (ModelState.IsValid)
             {
+                MemoryStream target = new MemoryStream();
+                image.InputStream.CopyTo(target);
+                byte[] directorImageByteArray = target.ToArray();           //oldImage convertor
+                oldDirector.DirectorIMG = directorImageByteArray;
+
                 Director newDirector = new Director();
                 newDirector.DirectorID = (int)Session["DirectorID"];
                 newDirector = db.Directors.SingleOrDefault(a => a.DirectorID == newDirector.DirectorID);
@@ -282,7 +288,7 @@ namespace IMDB.Controllers
                 newDirector.LastName = oldDirector.LastName;
                 newDirector.Description = oldDirector.Description;
                 newDirector.Age = oldDirector.Age;
-                // actorView.ActorIMG = tempActor.ActorIMG;
+                newDirector.DirectorIMG = oldDirector.DirectorIMG;
 
                 db.Entry(newDirector).State = EntityState.Modified;
                 db.SaveChanges();
@@ -291,9 +297,100 @@ namespace IMDB.Controllers
 
             return View();
         }
-    }
- 
 
- }
+
+        public ActionResult DeleteDriector(int id)
+        {
+            var director = db.Directors.SingleOrDefault(a => a.DirectorID == id);
+            foreach (var item in db.Movies)
+            {
+                if (item.DirectorID == id)
+                {
+                    item.DirectorID = null;
+                }
+
+            }
+            db.Directors.Remove(director);
+            db.SaveChanges();
+            return RedirectToAction("DirectorList", "Profile");
+        }
+
+        [HttpGet]
+        public ActionResult MovieEdit(int? id)
+        {
+            if (id != null)
+            {
+                var movie = db.Movies.SingleOrDefault(a => a.MovieID == id);
+                var director = db.Directors.ToList();
+                if (movie == null)      //checking integirty  
+                {
+                    return HttpNotFound();
+                }
+                MovieCreationViewModel movieData = new MovieCreationViewModel         // passing required Actor Data for the update
+                {
+                    Movie = movie,
+                    Directors = director
+                 };
+
+                Session["MovieID"] = movieData.Movie.MovieID;
+                return View(movieData);
+            }
+
+            else
+            {
+                return RedirectToAction("Movie");
+            }
+        }
+        [HttpPost]
+        public ActionResult MovieEdit(MovieCreationViewModel oldMovie, HttpPostedFileBase image)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                MemoryStream target = new MemoryStream();
+                image.InputStream.CopyTo(target);
+                byte[] directorImageByteArray = target.ToArray();           //oldImage convertor
+                oldMovie.Movie.MovieIMG = directorImageByteArray;
+
+                Movie newMovie = new Movie();
+                newMovie.MovieID = (int)Session["MovieID"];                                 
+                newMovie = db.Movies.SingleOrDefault(a => a.MovieID == newMovie.MovieID);   //creating new variable to pass old data
+
+                newMovie.MovieName = oldMovie.Movie.MovieName;
+                newMovie.MovieIMG = oldMovie.Movie.MovieIMG;
+                newMovie.Description = oldMovie.Movie.Description;          //passing old data to database
+                newMovie.DirectorID = oldMovie.Movie.DirectorID;
+ 
+                db.Entry(newMovie).State = EntityState.Modified;            //modifying and saving changes
+                db.SaveChanges();   
+                return RedirectToAction("Movie", "Profile");  // movie profile, new { id = newMovie.MovieID }
+            }
+            var director = db.Directors.ToList();
+            oldMovie.Directors = director;
+            return View("Movie",oldMovie);
+        }
+
+        public ActionResult DeleteMovie(int id)
+        {
+            var movie = db.Movies.SingleOrDefault(a => a.MovieID == id);
+            foreach (var item in db.Movies)
+                         db.Movies.Remove(movie);
+            db.SaveChanges();
+            return RedirectToAction("Movie", "Profile");            
+        }
+
+       public ActionResult MovietoActorDelete(int idActor , int idMovie)
+        {
+           var  movieActor = db.MovieActors.SingleOrDefault(model => model.MovieID == idMovie && model.ActorID == idActor);
+            db.MovieActors.Remove(movieActor); 
+            db.SaveChanges();
+            return RedirectToAction("Movie", "Profile");
+        }
+
+
+
+    }
+}
 
 

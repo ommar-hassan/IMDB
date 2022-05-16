@@ -14,20 +14,24 @@
     <link rel="stylesheet" href="~/Content/ActorListStyle.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 </head>
-<header>
-    <a href="#" class="logo">
-        <i>IMDb</i>
-    </a>
-    <ul class="navbar">
-        <li><a href="#home" class="home-active">Home</a></li>
-        <li><a href="#movies">Movie</a></li>
-        <li><a href="#actors">Actors</a></li>
-        <li><a href="#Directors">Directors</a></li>
-    </ul>
-    <input type="text" placeholder="Search..">
-    <a href="#" class="btn">Sign In</a>
-</header>
+
 <body>
+
+    <header>
+        <a href="#" class="logo">
+            <i>IMDb</i>
+        </a>
+        <ul class="navbar">
+            <li><a href="#home" class="home-active">Home</a></li>
+            <li>@Html.ActionLink("Movies", "Movie")</li>
+            <li>@Html.ActionLink("Actors", "ActorList")</li>
+            <li>@Html.ActionLink("Directors", "DirectorList")</li>
+            <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
+
+        </ul>
+
+        <a href="#" class="btn">Sign In</a>
+    </header>
     <div class="row">
         <div class="container">
 

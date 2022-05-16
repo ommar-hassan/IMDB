@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using IMDB.Models;
 
+
 namespace IMDB.ViewModels
 {
-    public class MovieCreationViewModel 
+    public class Search
     {
-        public Movie Movie { get; set; }
-
+        public IEnumerable<Movie> Movies { get; set; }
+        public IEnumerable<Actor> Actors { get; set; }
         public IEnumerable<Director> Directors { get; set; }
-        public Director Director { get; set; }
-
+ 
     }
 }

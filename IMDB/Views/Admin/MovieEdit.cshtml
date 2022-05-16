@@ -1,0 +1,62 @@
+﻿@model IMDB.ViewModels.MovieCreationViewModel
+
+@{
+
+    ViewBag.Title = "Create New Movie";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CreationForm.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="IMDB-image">
+        <a href="Home"><img src="~/Image/IMDb Image.png" alt="IMDb logo" /></a>
+    </div>
+    <div class="creation-form">
+        <h1 class="Header">Create New Movie</h1>
+
+
+        @using (Html.BeginForm("MovieEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.Movie.MovieName)
+                @Html.TextBoxFor(name => name.Movie.MovieName, new { @class = "input" })
+                @Html.ValidationMessageFor(name => name.Movie.MovieName, "", new { @class = "ErrorMSG" })
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.Movie.DirectorID)
+                @Html.DropDownListFor(name => name.Movie.DirectorID, new SelectList(Model.Directors, "DirectorID", "FirstName"), "Select Movie Director", new { @class = "list" })
+                @Html.ValidationMessageFor(name => name.Movie.DirectorID, "", new { @class = "ErrorMSG" })
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.Movie.Description)
+                @Html.TextAreaFor(name => name.Movie.Description, new { @class = "input" })
+            </div>
+
+            <div class="text-line">
+                @Html.LabelFor(text => text.Movie.MovieIMG)
+                <input type="file" name="image" class="file-upload-field" />
+            </div>
+
+            <div class="text-line">
+                <h4 style="color:green;">@TempData["Message"]</h4>
+                <div class="down">
+                    <input type="submit" value="Create" class="button" aria-label="File browser example" />
+                    @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { @id = "BackBtn" })
+                </div>
+            </div>
+        }
+    </div>
+
+</body>
+
+
+</html>

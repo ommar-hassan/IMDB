@@ -1,7 +1,8 @@
-﻿@model IMDB.Models.Actor
-    @{ 
-        ViewData["Title"] = "Actor Details";
-    }
+﻿@model IMDB.ViewModels.Actor_Movie
+@using IMDB.Models
+@{
+    ViewData["Title"] = "Actor Details";
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,30 +14,29 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<header>
-    <a href="#" class="logo">
-        <i>IMDb</i>
-    </a>
-    <ul class="navbar">
-        <li><a href="#home" class="home-active">Home</a></li>
-        <li><a href="#movies">Movie</a></li>
-        <li><a href="#actors">Actors</a></li>
-        <li><a href="#Directors">Directors</a></li>
-    </ul>
-    <input type="text" placeholder="Search..">
-    <a href="#" class="btn">Sign In</a>
 
-</header>
 <body>
+    <header>
+        <a href="#" class="logo">
+            <i>IMDb</i>
+        </a>
+        <ul class="navbar">
+            <li><a href="#home" class="home-active">Home</a></li>
+            <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
+        </ul>
+        
+        <a href="#" class="btn">Sign In</a>
+
+    </header>
     <!----hero Section start---->
     <!----About section start---->
     <section class="about">
         <div class="main">
-            <img src="img/RR.jpg">
+            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Actors.ActorIMG))">
             <div class="about-text">
-                <h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
+                <h2>@Html.DisplayFor(model => model.Actors.FirstName) @Html.DisplayFor(model => model.Actors.LastName)</h2>
                 <h5>Actor <span>& Director</span></h5>
-                <p>@Html.DisplayFor(model => model.Description)</p>
+                <p>@Html.DisplayFor(model => model.Actors.Description)</p>
                 <form class="rating">
                     <label>
                         <input type="radio" name="stars" value="1" />
@@ -79,46 +79,24 @@
             <h2>Movies</h2>
         </div>
         <div class="box">
-            <div class="card">
-                <div class="content">
-                    <a href="" target="_blank">
-                        <img src="img/deadpoolcover.jpg" class="movie">
-                        <div class="content-overlay"></div>
-                        <div class="content-details fadeIn-bottom">
-                            <h3 class="content-title">Go to movie</h3>
-                            <p class="content-text">Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life</p>
-                        </div>
-                    </a>
+            @foreach (var item in Model.MovieActors)
+            {
+                <div class="card">
+                    <div class="content">
+                        <a href="" target="_blank">
+                            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Movie.MovieIMG))" class="movie" />
+                            <div class="content-overlay"></div>
+                            <div class="content-details fadeIn-bottom">
+                                <h3 class="content-title">Go to movie</h3>
+                                <p class="content-text"> @Html.DisplayFor(model => item.Movie.Description)</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <div class="content">
-                    <a href="" target="_blank">
-                        <img src="img/freeGuy.jpg" class="movie">
-                        <div class="content-overlay"></div>
-                        <div class="content-details fadeIn-bottom">
-                            <h3 class="content-title">Go to movie</h3>
-                            <p class="content-text">a bank teller who discovers he is actually a background player in an open-world video game, decides to become the hero of his own story... one he rewrites himself. Now in a world where there are no limits, he is determined to be the guy who saves his world his way... before it is too late.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <div class="content">
-                    <a href="" target="_blank">
-                        <img src="img/hitmansBodyguar.jpg" class="movie">
-                        <div class="content-overlay"></div>
-                        <div class="content-details fadeIn-bottom">
-                            <h3 class="content-title">Go to movie</h3>
-                            <p class="content-text">The film follows a bodyguard (Reynolds) who must protect a convicted hitman (Jackson), who's on his way to testify at the International Criminal Court against a sadistic, Eastern European dictator (Oldman)</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            }
         </div>
+
     </div>
 
 

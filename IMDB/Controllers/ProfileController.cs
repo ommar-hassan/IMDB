@@ -13,27 +13,30 @@ namespace IMDB.Controllers
     public class ProfileController : Controller
     {
 
-         DBContext _context = new DBContext();
+         DBContext db = new DBContext();
 
         // GET: Actor
         public ActionResult ActorList()
         {
-            var data = _context.Actors.ToList();
+            var data = db.Actors.ToList();
             return View(data);
         }
 
-        //movie
-        public async Task<ActionResult> Movie()
-        {
-            var allMovies = await _context.Movies.ToListAsync();
-            return View();
-        }
+
 
         //Director
         public async Task<ActionResult> Directorlist()
         {
-            var allDirectors = await _context.Directors.ToListAsync();
+            var allDirectors = await db.Directors.ToListAsync();
             return View(allDirectors);
+        }
+
+
+        //movie
+        public async Task<ActionResult> Movie()
+        {
+            var allMovies = await db.Movies.ToListAsync();
+            return View(allMovies);
         }
 
     }
