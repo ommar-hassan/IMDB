@@ -90,6 +90,7 @@
         border-top: 1px dashed #DDDDDD;
         padding: 20px 0;
         margin: 0;
+        display:inline-block;
     }
 
         #comments .media > .pull-left {
@@ -100,21 +101,19 @@
             max-width: 100px;
         }
 
-        #comments .media h4 {
-            margin: 0 0 10px;
-        }
+.media-body {
+    display: inline-block;
+    position : absolute;
+    margin-left: 2%;
+  
+}
 
-            #comments .media h4 span {
-                font-size: 14px;
-                float: right;
-                color: #999999;
-            }
-
-        #comments .media p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
+#comments .media p {
+    text-align: justify;
+}
+.media-heading {
+    width:100%;
+}
     #comments .media-detail {
         margin: 0;
     }

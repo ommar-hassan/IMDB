@@ -15,5 +15,17 @@ namespace IMDB.ViewModels
         public IEnumerable<MovieActor> MovieActor { get; set; }
 
         public Director Director { get; set; }
+
+        public Comment Comment { get; set; }
+
+        public IEnumerable<Comment> Comments { get; set; }
+
+        public User User { get; set; }
+
+        public Like Like { get; set; }
+
+        public IEnumerable<Like> Likes { get; set; }
+
+        public int Counter { get; set; }
     }
 }

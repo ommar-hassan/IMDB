@@ -20,5 +20,58 @@
 h4 {
     color: goldenrod;
     line-height: 170%;
-    text-shadow: 3px 3px 4px black;
+    text-shadow: 1.3px 2px 2px black;
+}
+
+.text-line{
+    display:inline-block;
+    width : 100%;
+}
+
+
+#movieImage {
+    width: 28%;
+}
+
+.Likes{
+    position:relative;
+    margin-left:300px;
+}
+
+#Like,
+#Dislike {
+    width: 20px;
+    border-radius: 35%;
+    text-indent:-10px;
+    
+}
+
+#Dislike {
+    margin-left: 25px;
+    text-indent: -20px;
+}
+
+
+button.like {
+    width: 30px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border-color: blue;
+    background-size: 100%;
+    background-image: url(../Image/like.jpg);
+    background-repeat: no-repeat;
+    border-width: 1px;
+}
+
+button.dislike {
+    width: 30px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-size: 100%;
+    background-image: url(../Image/dislike.jpg);
+    background-repeat: no-repeat;
+    border-color: darkred;
+    border-width: 1px;
 }
