@@ -23,6 +23,7 @@ namespace IMDB.Controllers
 
             return View(actorView);
         }
+
         public ActionResult DirectorProfile(int id)
         {
             var directorView = _context.Directors.SingleOrDefault(x => x.DirectorID == id);
@@ -87,7 +88,7 @@ namespace IMDB.Controllers
                     like.MovieID = movieId;
                     like.UserID = userID;
                     like.LikeValue = likeValue;
-                };                    
+                };
             }
 
             if (profile.Comment != null)

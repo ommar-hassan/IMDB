@@ -9,43 +9,33 @@ namespace IMDB.Models
     public class User
     {
         [Key]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "ID required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
         [Display(Name = "ID")]
         public int UserID { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "First name required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
         [Display(Name = "First Name")]
         public String FirstName { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Last name required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
         [Display(Name = "Last Name")]
         public String LastName { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "email required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
         [Display(Name = "Email")]
         public String Email { get; set; }
 
-
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
         [DataType(DataType.Password)]
-        //[MinLength(6, ErrorMessage = "Minimum 6 characters required")]
         [Display(Name = "Password")]
         public String Password { get; set; }
 
-
+        [Display(Name = "Profile Image")]
         public Byte[] ProfileIMG { get; set; }
 
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "1 for admin   0 for user")]
         [Display(Name = "RoleID")]
-        public UserRoleID RoleID { get; set; }
-
-        public enum UserRoleID
-        {
-            User,
-            Admin
-        }
-
+        public int RoleID { get; set; }
 
     }
 }

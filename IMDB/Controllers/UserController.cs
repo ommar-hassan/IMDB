@@ -29,38 +29,60 @@ namespace IMDB.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (userImage != null)
+                {
+                    MemoryStream target = new MemoryStream();
+                    userImage.InputStream.CopyTo(target);
+                    byte[] userImageByteArray = target.ToArray();
+                    User.ProfileIMG = userImageByteArray;
+                }
+                User.RoleID = 1;          //   1  for  User  >>  0  for  Admin
                 db.Users.Add(User);
                 db.SaveChanges();
-                return RedirectToAction("home");
+                return RedirectToAction("Login");
             }
-            if (userImage != null)
-            {
-                MemoryStream target = new MemoryStream();
-                userImage.InputStream.CopyTo(target);
-                byte[] userImageByteArray = target.ToArray();
-                User.ProfileIMG = userImageByteArray;
-            }
+            
             return View("Registration");
         }
 
-        public ActionResult Login(User user)
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Login()
         {
-            if (ModelState.IsValid)
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User login)
+        {
+            try
             {
-                var Details = (from pepole in db.Users
-                               where pepole.Email == user.Email &&
-                                 pepole.Password == user.Password
-                               select new
-                               {
-                                   user.UserID,
-                                   user.Email
-                               }).ToList();
-                if (Details.FirstOrDefault() != null)
+                if (!ModelState.IsValid)
                 {
-                    Session["ID"] = Details.FirstOrDefault().UserID;
-                    Session["Email"] = Details.FirstOrDefault().Email;
-                    return RedirectToAction("home");
+                    User validuser = db.Users.FirstOrDefault(User => User.Email.ToLower() == login.Email.ToLower() && User.Password == login.Password);
+                    if (validuser != null)
+                    {
+                        Session["Userid"] = validuser.UserID;
+                        Session["UserName"] = validuser.FirstName + " " + validuser.LastName;
+                        Session["UserImg"] = validuser.ProfileIMG;
+                        if(validuser.RoleID == 0)  //      Admin
+                        {
+                            return RedirectToAction("ActorList", "Profile");
+                        }
+                        else {                   //       User
+                            return RedirectToAction("Home", "Home");
+                        }
+                    }
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid login credentials.");
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                ModelState.AddModelError("", "Invalid login credentials.");
             }
             return View();
         }
@@ -87,11 +109,10 @@ namespace IMDB.Controllers
             {
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
             return View(user);
         }
     }
 }
                   
-   
