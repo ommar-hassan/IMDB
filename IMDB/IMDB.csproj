@@ -100,20 +100,28 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Comment.css" />
     <Content Include="Content\CreationForm.css" />
+    <Content Include="Content\Home.css" />
     <Content Include="Content\MovieProfile.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\DefaultActress.png" />
+    <Content Include="Image\DefaultProfile.jpg" />
+    <Content Include="Image\dislike.jpg" />
+    <Content Include="Image\like.jpg" />
+    <Content Include="Image\MovieImages\Childs Play.jpg" />
+    <Content Include="Image\MovieImages\MovieDefault.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\ActorListStyle.css" />
-    <Content Include="MovieImages\DjangoUnchained.jpg" />
-    <Content Include="MovieImages\Dr.Strange.jpg" />
-    <Content Include="MovieImages\Mirage.jpg" />
-    <Content Include="MovieImages\SpiderMan NoWayHome.png" />
-    <Content Include="MovieImages\The Call.jpg" />
-    <Content Include="MovieImages\The GodFather.jpg" />
-    <Content Include="MovieImages\The Invisible Guest.jpg" />
-    <Content Include="MovieImages\TheAmazingSpiderMan.jpg" />
+    <Content Include="Image\MovieImages\DjangoUnchained.jpg" />
+    <Content Include="Image\MovieImages\Dr.Strange.jpg" />
+    <Content Include="Image\MovieImages\Mirage.jpg" />
+    <Content Include="Image\MovieImages\SpiderMan NoWayHome.png" />
+    <Content Include="Image\MovieImages\The Call.jpg" />
+    <Content Include="Image\MovieImages\The GodFather.jpg" />
+    <Content Include="Image\MovieImages\The Invisible Guest.jpg" />
+    <Content Include="Image\MovieImages\TheAmazingSpiderMan.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -157,6 +165,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieActor.cs" />
     <Compile Include="ViewModels\AssignsViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MovieCreationViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserFavoriteActor.cs" />
@@ -181,6 +190,7 @@
     <Content Include="Views\Admin\DirectorssEdit.cshtml" />
     <Content Include="Views\Admin\MovieToActor.cshtml" />
     <Content Include="Views\View\MovieProfile.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,12 +200,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
     <Folder Include="Layout\" />
     <Folder Include="Views\Actor\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Director\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Movie\" />
     <Folder Include="Views\Shared\" />
   </ItemGroup>

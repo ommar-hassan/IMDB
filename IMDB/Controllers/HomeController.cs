@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IMDB.ViewModels;
+using IMDB.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +10,20 @@ namespace IMDB.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DBContext db = new DBContext();
         // GET: Home
         public ActionResult Home()
         {
-
-            return View();
+            var directors = db.Directors.ToList();
+            var actors = db.Actors.ToList();
+            var movies = db.Movies.ToList();
+            HomeViewModel data = new HomeViewModel()
+            {
+                Directors = directors,
+                Actors = actors,
+                Movies = movies
+            };
+            return View(data);
         }
     }
 }

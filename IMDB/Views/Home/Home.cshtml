@@ -1,0 +1,135 @@
+﻿@model IMDB.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="~/Content/Home.css" rel="stylesheet" />
+    <link href="~/Content/ActorStyle.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <!--    NAV    -->
+    <header>
+        <a href="#" class="logo">
+            <i>IMDb</i>
+        </a>
+        <ul class="navbar">
+            <li>
+                <a href="#home" class="home-active">Home</a>
+            </li>
+            <li>
+                <a href="#movies">Movie</a>
+            </li>
+            <li>
+                <a href="#actors">Actors</a>
+            </li>
+            <li>
+                <a href="#Directors">Directors</a>
+            </li>
+        </ul>
+        <input type="text" placeholder="Search..">
+        <a href="#" class="btn">Sign In</a>
+
+    </header>
+
+    <br /><br /><br /><br />
+    <h2 style="padding-bottom:10px;">Movies</h2>
+    <hr />
+    <section class="hero-section">
+        <!--   Movie Cards   -->
+
+        @foreach (var item in Model.Movies)
+        {
+            <div class="card-grid">
+                <a href="@Url.Action("MovieProfile", "View",new { id = item.MovieID } )" class="card">
+                    <div class="card__background" style="width:200px;height:297px;">
+                        @if (item.MovieIMG != null)
+                        {
+
+                            <img style="width:200px;height:100%;border-radius:7.2%" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.MovieIMG))" alt="@item.MovieName">
+
+                        }
+                        else
+                        {
+                            <img style="width:200px;height:100%;border-radius:7.2%" src="~/Image/MovieImages/MovieDefault.jpg" . alt="@item.MovieName" />
+                        }
+                    </div>
+                    <div class="card__content">
+                        <p class="card__category">Movie</p>
+                        <h3 class="card__heading">@Html.DisplayFor(model => item.MovieName)</h3>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </section>
+
+    <h2>Actors</h2>
+    <hr /> 
+    <section class="hero-section">
+        <!--  Actor Cards   -->
+
+        @foreach (var item in Model.Actors)
+        {
+            <div class="card-grid">
+                <a href="@Url.Action("ActorProfile", "View",new { id = item.ActorID } )" class="card">
+                    <div class="card__background" style="width:200px;height:297px;">
+                        @if (item.ActorIMG != null)
+                        {
+
+                            <img style="width:200px;height:100%;border-radius:7.2%" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.ActorIMG))" alt="@item.FirstName @item.LastName">
+
+                        }
+                        else
+                        {
+                            <img style="width:200px;height:100%;border-radius:7.2%" src="~/Image/DefaultProfile.jpg" . alt="@item.FirstName @item.LastName" />
+                        }
+                    </div>
+                    <div class="card__content">
+                        <p class="card__category">Actor</p>
+                        <h3 class="card__heading">@Html.DisplayFor(model => item.FirstName) @Html.DisplayFor(model => item.LastName)</h3>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </section>
+    <h2>Directors</h2>
+    <hr />
+    <section class="hero-section">
+        <!--   Director Cards   -->
+
+        @foreach (var item in Model.Directors)
+        {
+            <div class="card-grid">
+                <a href="@Url.Action("DirectorProfile", "View",new { id = item.DirectorID } )" class="card">
+                    <div class="card__background" style="width:200px;height:297px;">
+                        @if (item.DirectorIMG != null)
+                        {
+
+                            <img style="width:200px;height:100%;border-radius:7.2%" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.DirectorIMG))" alt="@item.FirstName @item.LastName">
+
+                        }
+                        else
+                        {
+                            <img style="width:200px;height:100%;border-radius:7.2%" src="~/Image/DefaultProfile.jpg" . alt="@item.FirstName @item.LastName" />
+                        }
+                    </div>
+                    <div class="card__content">
+                        <p class="card__category">Director</p>
+                        <h3 class="card__heading">@Html.DisplayFor(model => item.FirstName) @Html.DisplayFor(model => item.LastName)</h3>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </section>
+
+</body>
+</html>
