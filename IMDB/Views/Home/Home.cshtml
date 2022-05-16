@@ -47,13 +47,12 @@
         @foreach (var item in Model.Movies)
         {
             <div class="card-grid">
+
                 <a href="@Url.Action("MovieProfile", "View",new { id = item.MovieID } )" class="card">
                     <div class="card__background" style="width:200px;height:297px;">
                         @if (item.MovieIMG != null)
                         {
-
                             <img style="width:200px;height:100%;border-radius:7.2%" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.MovieIMG))" alt="@item.MovieName">
-
                         }
                         else
                         {
