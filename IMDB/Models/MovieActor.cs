@@ -11,11 +11,13 @@ namespace IMDB.Models
     {
         public virtual Movie Movie { get; set; }
 
+        [Required(ErrorMessage = "*")]
         [ForeignKey("Movie")]
         public int MovieID { get; set; }
 
         public virtual Actor Actor { get; set; }
 
+        [Required(ErrorMessage = "*")]
         [ForeignKey("Actor")]
         public int ActorID { get; set; }
     }

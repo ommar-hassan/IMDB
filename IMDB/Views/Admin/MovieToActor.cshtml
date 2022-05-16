@@ -1,5 +1,4 @@
 ﻿@model IMDB.ViewModels.AssignsViewModel
-
 @{
     ViewBag.Title = "Assign movie to actor";
 }
@@ -28,13 +27,13 @@
             <div class="text-line">
                 @Html.LabelFor(text => text.MovieActor.ActorID, "Actor Name")
                 @Html.DropDownListFor(name => name.MovieActor.ActorID, new SelectList(Model.Actors, "ActorID", "FirstName"), "Select The Actor", new { @class = "list" })
-                @Html.ValidationMessageFor(name => name.MovieActor.ActorID)
+                <span style="color:red">@Html.ValidationMessageFor(name => name.MovieActor.ActorID)</span>
             </div>
 
             <div class="text-line">
                 @Html.LabelFor(text => text.MovieActor.MovieID, "Movie Name")
                 @Html.DropDownListFor(name => name.MovieActor.MovieID, new SelectList(Model.Movies, "MovieID", "MovieName"), "Select The Movie", new { @class = "list" })
-                @Html.ValidationMessageFor(name => name.MovieActor.MovieID)
+                <span style="color:red">@Html.ValidationMessageFor(name => name.MovieActor.MovieID)</span>
             </div>
 
             <div class="text-line">
@@ -46,8 +45,6 @@
         }
     </div>
 
-    
-    
 
 </body>
 </html>
