@@ -16,21 +16,25 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo">
-            <i>IMDb</i>
-        </a>
+        @Html.ActionLink("IMDb", "Home", new { controller = "Home" }, new { @class = "logo" })
+
         <ul class="navbar">
-            <li><a href="#home" class="home-active">Home</a></li>
-            <li>@Html.ActionLink("Movies", "Movie")</li>
-            <li>@Html.ActionLink("Actors", "ActorList")</li>
-            <li>@Html.ActionLink("Directors", "DirectorList")</li>
+
+            <li>
+                @Html.ActionLink("Home", "Home", new { controller = "Home" }, new { @class = "home_active" })
+            </li>
+
             <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
+
         </ul>
-        <a href="#" class="btn">Sign In</a>
-        </header>
+        @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "btn" })
+    </header>
         <div class="content">
             <div class="container">
                 <h2 class="mb-5">IMDb Search</h2>
+                <br/>
+                <br/>
+                <br/>
                 @using (Html.BeginForm())
                 {
                     <input class="input" type="text" name="searchValue" />
@@ -53,7 +57,7 @@
 
                                 <tr>
                                     <td class="align-middle">Actor</td>
-                                    <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "ActorProfile", new { controller = "View", id = item.ActorID })</td>
+                                    <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "ActorProfile", new {id = item.ActorID },new { controller = "View" })</td>
                                     <td class="align-middle">@item.Age</td>
 
                                 </tr>
@@ -62,7 +66,7 @@
                             {
                                 <tr>
                                     <td class="align-middle">Director</td>
-                                    <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "DirectorProfile", new { controller = "View", id = item.DirectorID })</td>
+                                    <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "DirectorProfile", new {id = item.DirectorID },new { controller = "View" })</td>
                                     <td class="align-middle">@item.Age</td>
 
                                 </tr>
@@ -72,7 +76,7 @@
 
                                 <tr>
                                     <td class="align-middle">Movie</td>
-                                    <td class="align-middle">@Html.ActionLink(@item.MovieName, "MovieProfile", new { id = item.MovieName })</td>
+                                    <td class="align-middle">@Html.ActionLink(@item.MovieName, "MovieProfile", new { id = item.MovieName }, new { controller = "View" })</td>
                                     <td class="align-middle"></td>
                                 </tr>
                             }

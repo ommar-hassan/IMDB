@@ -17,26 +17,38 @@
 
 <body>
     <header>
-        <a href="#" class="logo">
-            <i>IMDb</i>
-        </a>
+
+        @Html.ActionLink("IMDb", "Home", new { controller = "Home" }, new { @class = "logo" })
+
         <ul class="navbar">
-            <li><a href="#home" class="home-active">Home</a></li>
+
+            <li>
+                @Html.ActionLink("Home", "Home", new { controller = "Home" }, new { @class = "home_active" })
+            </li>
+
             <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
+
         </ul>
-        
-        <a href="#" class="btn">Sign In</a>
+        @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "btn" })
 
     </header>
     <!----hero Section start---->
     <!----About section start---->
     <section class="about">
         <div class="main">
-            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Actors.ActorIMG))">
+            @if (Model.Actor.ActorIMG != null)
+            {
+                <img style="width:200px;height:100%;border-radius:7.2%" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Actor.ActorIMG))" alt="@Model.Actor.FirstName @Model.Actor.LastName">
+            }
+            else
+            {
+                <img style="width:200px;height:100%;border-radius:7.2%" src="~/Image/DefaultProfile.jpg" . alt="@Model.Actor.FirstName @Model.Actor.LastName" />
+            }
+
             <div class="about-text">
-                <h2>@Html.DisplayFor(model => model.Actors.FirstName) @Html.DisplayFor(model => model.Actors.LastName)</h2>
+                <h2>@Html.DisplayFor(model => model.Actor.FirstName) @Html.DisplayFor(model => model.Actor.LastName)</h2>
                 <h5>Actor <span>& Director</span></h5>
-                <p>@Html.DisplayFor(model => model.Actors.Description)</p>
+                <p>@Html.DisplayFor(model => model.Actor.Description)</p>
                 <form class="rating">
                     <label>
                         <input type="radio" name="stars" value="1" />
@@ -84,7 +96,14 @@
                 <div class="card">
                     <div class="content">
                         <a href="" target="_blank">
-                            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Movie.MovieIMG))" class="movie" />
+                            @if (item.Movie.MovieIMG != null)
+                            {
+                                <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.Movie.MovieIMG))" alt="@item.Movie.MovieName" id="movieImage" />
+                            }
+                            else
+                            {
+                                <img src="~/Image/MovieImages/MovieDefault.jpg" alt="@item.Movie.MovieName" />
+                            }
                             <div class="content-overlay"></div>
                             <div class="content-details fadeIn-bottom">
                                 <h3 class="content-title">Go to movie</h3>
@@ -93,13 +112,9 @@
                         </a>
                     </div>
                 </div>
-
             }
         </div>
-
     </div>
-
-
 
 
     <!------footer start--------->

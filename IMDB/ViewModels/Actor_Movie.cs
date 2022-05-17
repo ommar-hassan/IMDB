@@ -8,7 +8,7 @@ namespace IMDB.ViewModels
 {
     public class Actor_Movie
     {
-        public Actor Actors { get; set; }
+        public Actor Actor { get; set; }
         // public List<Actor> actors { get; set; }
         public IEnumerable<Movie> Movies { get; set; }
         public IEnumerable<MovieActor> MovieActors { get; set; }

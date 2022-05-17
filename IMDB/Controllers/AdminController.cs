@@ -330,7 +330,7 @@ namespace IMDB.Controllers
                 {
                     Movie = movie,
                     Directors = director
-                 };
+                };
 
                 Session["MovieID"] = movieData.Movie.MovieID;
                 return View(movieData);
@@ -341,6 +341,7 @@ namespace IMDB.Controllers
                 return RedirectToAction("Movie");
             }
         }
+
         [HttpPost]
         public ActionResult MovieEdit(MovieCreationViewModel oldMovie, HttpPostedFileBase image)
         {
@@ -354,21 +355,21 @@ namespace IMDB.Controllers
                 oldMovie.Movie.MovieIMG = directorImageByteArray;
 
                 Movie newMovie = new Movie();
-                newMovie.MovieID = (int)Session["MovieID"];                                 
+                newMovie.MovieID = (int)Session["MovieID"];
                 newMovie = db.Movies.SingleOrDefault(a => a.MovieID == newMovie.MovieID);   //creating new variable to pass old data
 
                 newMovie.MovieName = oldMovie.Movie.MovieName;
                 newMovie.MovieIMG = oldMovie.Movie.MovieIMG;
                 newMovie.Description = oldMovie.Movie.Description;          //passing old data to database
                 newMovie.DirectorID = oldMovie.Movie.DirectorID;
- 
+
                 db.Entry(newMovie).State = EntityState.Modified;            //modifying and saving changes
-                db.SaveChanges();   
+                db.SaveChanges();
                 return RedirectToAction("Movie", "Profile");  // movie profile, new { id = newMovie.MovieID }
             }
             var director = db.Directors.ToList();
             oldMovie.Directors = director;
-            return View("Movie",oldMovie);
+            return View("Movie", oldMovie);
         }
 
         public ActionResult DeleteMovie(int id)
@@ -381,15 +382,12 @@ namespace IMDB.Controllers
         }
 
        public ActionResult MovietoActorDelete(int idActor , int idMovie)
-        {
+       {
            var  movieActor = db.MovieActors.SingleOrDefault(model => model.MovieID == idMovie && model.ActorID == idActor);
             db.MovieActors.Remove(movieActor); 
             db.SaveChanges();
             return RedirectToAction("Movie", "Profile");
-        }
-
-
-
+       }
     }
 }
 

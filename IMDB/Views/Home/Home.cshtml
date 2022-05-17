@@ -16,25 +16,19 @@
 <body>
     <!--    NAV    -->
     <header>
-        <a href="#" class="logo">
-            <i>IMDb</i>
-        </a>
+
+        @Html.ActionLink("IMDb", "Home", new { controller = "Home" }, new { @class = "logo" })
+
         <ul class="navbar">
+
             <li>
-                <a href="#home" class="home-active">Home</a>
+                @Html.ActionLink("Home", "Home", new { controller = "Home" }, new { @class = "home_active" })
             </li>
-            <li>
-                <a href="#movies">Movie</a>
-            </li>
-            <li>
-                <a href="#actors">Actors</a>
-            </li>
-            <li>
-                <a href="#Directors">Directors</a>
-            </li>
+
+            <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
+
         </ul>
-        <input type="text" placeholder="Search..">
-        <a href="#" class="btn">Sign In</a>
+        @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "btn" })
 
     </header>
 

@@ -105,9 +105,11 @@
     <Content Include="Content\Home.css" />
     <Content Include="Content\MovieProfile.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\background.png" />
     <Content Include="Image\DefaultActress.png" />
     <Content Include="Image\DefaultProfile.jpg" />
     <Content Include="Image\dislike.jpg" />
+    <Content Include="Image\IMDb Image.png" />
     <Content Include="Image\like.jpg" />
     <Content Include="Image\MovieImages\Childs Play.jpg" />
     <Content Include="Image\MovieImages\MovieDefault.jpg" />
@@ -126,6 +128,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Image\search.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -147,13 +150,15 @@
     <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205131209147_director.cs" />
-    <Compile Include="Migrations\202205131209147_director.designer.cs">
-      <DependentUpon>202205131209147_director.cs</DependentUpon>
+    <Compile Include="Migrations\202205162311152_Merge.cs" />
+    <Compile Include="Migrations\202205162311152_Merge.designer.cs">
+      <DependentUpon>202205162311152_Merge.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageConversion.cs" />
@@ -164,7 +169,9 @@
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieActor.cs" />
+    <Compile Include="ViewModels\Actor_Movie.cs" />
     <Compile Include="ViewModels\AssignsViewModel.cs" />
+    <Compile Include="ViewModels\Director_Movie.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MovieCreationViewModel.cs" />
     <Compile Include="Models\User.cs" />
@@ -173,6 +180,7 @@
     <Compile Include="Models\UserFavoriteMovie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MovieProfileViewModel.cs" />
+    <Compile Include="ViewModels\Search.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -191,6 +199,13 @@
     <Content Include="Views\Admin\MovieToActor.cshtml" />
     <Content Include="Views\View\MovieProfile.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Search\Searching.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Registration.cshtml" />
+    <Content Include="Views\Profile\Movie.cshtml" />
+    <Content Include="Views\Admin\DirectorsEdit.cshtml" />
+    <Content Include="Views\Admin\MovieEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,8 +223,8 @@
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205131209147_director.resx">
-      <DependentUpon>202205131209147_director.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205162311152_Merge.resx">
+      <DependentUpon>202205162311152_Merge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

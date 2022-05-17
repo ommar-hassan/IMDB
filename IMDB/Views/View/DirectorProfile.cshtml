@@ -17,25 +17,36 @@
 
 <body>
     <header>
-        <a href="#" class="logo">
-            <i>IMDb</i>
-        </a>
-        <ul class="navbar">
-            <li><a href="#home" class="home-active">Home</a></li>
-            <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
-        </ul>
 
-        <a href="#" class="btn">Sign In</a>
+        @Html.ActionLink("IMDb", "Home", new { controller = "Home" }, new { @class = "logo" })
+
+        <ul class="navbar">
+
+            <li>
+                @Html.ActionLink("Home", "Home", new { controller = "Home" }, new { @class = "home_active" })
+            </li>
+
+            <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
+
+        </ul>
+        @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "btn" })
 
     </header>
 
     <section class="about">
         <div class="main">
-            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Directors.DirectorIMG))">
+            @if (Model.Director.DirectorIMG != null)
+            {
+                <img style="width:200px;height:100%;border-radius:7.2%" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.Director.DirectorIMG))" alt="@Model.Director.FirstName @Model.Director.LastName">
+            }
+            else
+            {
+                <img style="width:200px;height:100%;border-radius:7.2%" src="~/Image/DefaultProfile.jpg" . alt="@Model.Director.FirstName @Model.Director.LastName" />
+            }
             <div class="about-text">
-                <h2>@Html.DisplayFor(model => model.Directors.FirstName) @Html.DisplayFor(model => model.Directors.LastName)</h2>
+                <h2>@Html.DisplayFor(model => model.Director.FirstName) @Html.DisplayFor(model => model.Director.LastName)</h2>
                 <h5>Actor <span>& Director</span></h5>
-                <p>@Html.DisplayFor(model => model.Directors.Description)</p>
+                <p>@Html.DisplayFor(model => model.Director.Description)</p>
                 <form class="rating">
                     <label>
                         <input type="radio" name="stars" value="1" />
@@ -73,9 +84,6 @@
     </section>
 
 
-
-
-
     <div class="service">
         <div class="title">
             <h2>Movies</h2>
@@ -86,7 +94,16 @@
                 <div class="card">
                     <div class="content">
                         <a href="" target="_blank">
-                            <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.MovieIMG))" class="movie" />
+
+                            @if (item.MovieIMG != null)
+                            {
+                                <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.MovieIMG))" alt="@item.MovieName" id="movieImage" />
+                            }
+                            else
+                            {
+                                <img src="~/Image/MovieImages/MovieDefault.jpg" alt="@item.MovieName" />
+                            }
+
                             <div class="content-overlay"></div>
                             <div class="content-details fadeIn-bottom">
                                 <h3 class="content-title">Go to movie</h3>
@@ -95,7 +112,6 @@
                         </a>
                     </div>
                 </div>
-
             }
         </div>
     </div>

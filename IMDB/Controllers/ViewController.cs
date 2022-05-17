@@ -11,41 +11,57 @@ namespace IMDB.Controllers
 {
     public class ViewController : Controller
     {
-        private DBContext _context = new DBContext();
+        private DBContext db = new DBContext();
         private readonly int userID = 8;  // random user to be replaced later
 
         // GET: View
         public ActionResult ActorProfile(int id)
         {
-            var actorView = _context.Actors.SingleOrDefault(x => x.ActorID == id);
-            if (actorView == null)
+            MovieActor particpations = new MovieActor();
+            var actorView = db.Actors.SingleOrDefault(x => x.ActorID == id);
+            var actor_movie = db.MovieActors.Where(x => x.ActorID == id).ToList();
+            Actor_Movie actorProfile = new Actor_Movie
+            {
+                Actor = actorView,
+                MovieActors = actor_movie
+
+            };
+            if (actorProfile == null)
                 return HttpNotFound();
 
-            return View(actorView);
+            return View(actorProfile);
         }
 
         public ActionResult DirectorProfile(int id)
         {
-            var directorView = _context.Directors.SingleOrDefault(x => x.DirectorID == id);
-            if (directorView == null)
+
+            var directorView = db.Directors.SingleOrDefault(x => x.DirectorID == id);
+            var director_movie = db.Movies.Where(x => x.DirectorID == id).ToList();
+            Director_Movie directorProfile = new Director_Movie
+            {
+                Director = directorView,
+                Movies = director_movie
+
+            };
+            if (directorProfile == null)
                 return HttpNotFound();
 
-            return View(directorView);
+            return View(directorProfile);
         }
 
         [HttpGet]
         [AllowAnonymous]
         public ActionResult MovieProfile(int id)
         {
-            var movie = _context.Movies.SingleOrDefault(x => x.MovieID == id);
+            var movie = db.Movies.SingleOrDefault(x => x.MovieID == id);
             if (movie == null)
                 return HttpNotFound();
 
             Session["MovieId"] = id;
-            var movieActors = _context.MovieActors.ToList().Where(model => model.MovieID == id);
-            var comments = _context.Comments.Where(model => model.MovieID == id);
+            var movieActors = db.MovieActors.ToList().Where(model => model.MovieID == id);
+            var comments = db.Comments.Where(model => model.MovieID == id);
             var director = movie.Director;
-            var rateCount = _context.Likes.Where(model => model.LikeValue == true && model.MovieID == id);
+            var rateCount = db.Likes.Where(model => model.LikeValue == true && model.MovieID == id);
             MovieProfileViewModel profile = new MovieProfileViewModel()
             {
                 Movie = movie,
@@ -63,7 +79,7 @@ namespace IMDB.Controllers
         public ActionResult MovieProfile(MovieProfileViewModel profile,int? liked)
         {
             var movieId = Int32.Parse(Session["MovieId"].ToString());
-            var alreadyLiked = _context.Likes.SingleOrDefault(model => model.UserID == userID && model.MovieID == movieId);
+            var alreadyLiked = db.Likes.SingleOrDefault(model => model.UserID == userID && model.MovieID == movieId);
 
             if (liked != null)
             {
@@ -79,11 +95,11 @@ namespace IMDB.Controllers
                     UserID = userID,
                     LikeValue = likeValue
                     };
-                    _context.Likes.Add(like);
+                    db.Likes.Add(like);
                 }
                 else
                 {
-                    Like like = _context.Likes.SingleOrDefault(model => model.UserID == userID && model.MovieID == movieId); // to get Like ID for update
+                    Like like = db.Likes.SingleOrDefault(model => model.UserID == userID && model.MovieID == movieId); // to get Like ID for update
 
                     like.MovieID = movieId;
                     like.UserID = userID;
@@ -95,10 +111,10 @@ namespace IMDB.Controllers
             {
                 profile.Comment.MovieID = movieId;
                 profile.Comment.UserID = userID;
-                _context.Comments.Add(profile.Comment);
+                db.Comments.Add(profile.Comment);
                 
             }
-            _context.SaveChanges();
+            db.SaveChanges();
             return RedirectToAction("MovieProfile");
         }
     }
