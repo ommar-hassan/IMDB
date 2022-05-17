@@ -27,63 +27,65 @@
             <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
         </ul>
         <a href="#" class="btn">Sign In</a>
-        </header>
-        <div class="content">
+    </header>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="content">
+        <div class="container">
+            <h2 class="mb-5">IMDb Search</h2>
+            @using (Html.BeginForm())
+            {
+                <input class="input" type="text" name="searchValue" />
+                <input type="submit" value="Search" />
+            }
             <div class="container">
-                <h2 class="mb-5">IMDb Search</h2>
-                @using (Html.BeginForm())
-                {
-                    <input class="input" type="text" name="searchValue" />
-                    <input type="submit" value="Search" />
-                }
-                <div class="container">
-                    <table class="table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Type</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Actors)
+                        {
 
-                        <thead>
                             <tr>
-                                <th scope="col">Type</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Age</th>
+                                <td class="align-middle">Actor</td>
+                                <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "ActorProfile", new { controller = "View", id = item.ActorID })</td>
+                                <td class="align-middle">@item.Age</td>
 
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Actors)
-                            {
+                        }
+                        @foreach (var item in Model.Directors)
+                        {
+                            <tr>
+                                <td class="align-middle">Director</td>
+                                <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "DirectorProfile", new { controller = "View", id = item.DirectorID })</td>
+                                <td class="align-middle">@item.Age</td>
 
-                                <tr>
-                                    <td class="align-middle">Actor</td>
-                                    <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "ActorProfile", new { controller = "View", id = item.ActorID })</td>
-                                    <td class="align-middle">@item.Age</td>
+                            </tr>
+                        }
+                        @foreach (var item in Model.Movies)
+                        {
 
-                                </tr>
-                            }
-                            @foreach (var item in Model.Directors)
-                            {
-                                <tr>
-                                    <td class="align-middle">Director</td>
-                                    <td class="align-middle">@Html.ActionLink(@item.FirstName + " " + @item.LastName, "DirectorProfile", new { controller = "View", id = item.DirectorID })</td>
-                                    <td class="align-middle">@item.Age</td>
-
-                                </tr>
-                            }
-                            @foreach (var item in Model.Movies)
-                            {
-
-                                <tr>
-                                    <td class="align-middle">Movie</td>
-                                    <td class="align-middle">@Html.ActionLink(@item.MovieName, "MovieProfile", new { id = item.MovieName })</td>
-                                    <td class="align-middle"></td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                            <tr>
+                                <td class="align-middle">Movie</td>
+                                <td class="align-middle">@Html.ActionLink(@item.MovieName, "MovieProfile", new { id = item.MovieName })</td>
+                                <td class="align-middle"></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
