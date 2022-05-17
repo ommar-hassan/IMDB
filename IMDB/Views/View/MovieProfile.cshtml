@@ -29,7 +29,14 @@
             <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
 
         </ul>
-        @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "btn" })
+        @if (Model.UserName != " ")
+        {
+            <span style="padding:8px">@Html.DisplayFor(model => model.UserName)</span>
+        }
+        else
+        {
+            @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "btn" })
+        }
 
     </header>
 

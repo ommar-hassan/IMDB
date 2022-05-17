@@ -1,0 +1,42 @@
+﻿@model IMDB.ViewModels.FavoriteDirector
+@{
+    ViewBag.Title = "Favorite Director";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/CreationForm.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/CreationForm.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="IMDB-image">
+        <a href="@Url.Action(" Home", "Home" )">
+            <img src="~/Image/IMDb Image.png" alt="IMDb logo" />
+        </a>
+    </div>
+
+    <div class="creation-form">
+        <h1 class="Header">Assign Movie to Actor</h1>
+
+        @using (Html.BeginForm("FavoriteDirector", "Favorite", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+        @Html.AntiForgeryToken()
+
+        <div class="text-line">
+            @Html.LabelFor(text => text.UserFavoriteDirector.DirectorID, "Director Name")
+            @Html.DropDownListFor(name => name.UserFavoriteDirector.DirectorID, new SelectList(Model.Directors, "ActorID", "FirstName"), "Select The Actor", new { @class = "list" })
+            <span style="color:red">@Html.ValidationMessageFor(name => name.UserFavoriteDirector.ActorID)</span>
+        </div>
+
+        <div class="text-line">
+            <input type="submit" value="Assign" class="button" aria-label="File browser example" />
+            @Html.ActionLink("Back", "Home", new { @class = "Linkbutton" }, new { @id = "BackBtn" })
+        </div>
+        }
+    </div>
+</body>
+</html>

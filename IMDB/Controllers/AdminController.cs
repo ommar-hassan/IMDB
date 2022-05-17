@@ -208,11 +208,16 @@ namespace IMDB.Controllers
         }
 
         [HttpPost]
-        public ActionResult ActorsEdit(Actor oldActor)
+        public ActionResult ActorsEdit(Actor oldActor, HttpPostedFileBase ActorImage)
         {
 
             if (ModelState.IsValid)
             {
+                MemoryStream target = new MemoryStream();
+                ActorImage.InputStream.CopyTo(target);
+                byte[] ActorImageByteArray = target.ToArray();           //oldImage convertor
+                oldActor.ActorIMG = ActorImageByteArray;
+
                 Actor newActor = new Actor();
                 newActor.ActorID = (int)Session["ActorID"];
                 newActor = db.Actors.SingleOrDefault(a => a.ActorID == newActor.ActorID);
@@ -221,7 +226,7 @@ namespace IMDB.Controllers
                 newActor.LastName = oldActor.LastName;
                 newActor.Description = oldActor.Description;
                 newActor.Age = oldActor.Age;
-                // actorView.ActorIMG = tempActor.ActorIMG;
+                newActor.ActorIMG = oldActor.ActorIMG;
 
                 db.Entry(newActor).State = EntityState.Modified;
                 db.SaveChanges();

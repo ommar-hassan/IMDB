@@ -12,7 +12,7 @@ namespace IMDB.Controllers
     public class ViewController : Controller
     {
         private DBContext db = new DBContext();
-        private readonly int userID = 8;  // random user to be replaced later
+         // random user to be replaced later
 
         // GET: View
         public ActionResult ActorProfile(int id)
@@ -58,6 +58,11 @@ namespace IMDB.Controllers
                 return HttpNotFound();
 
             Session["MovieId"] = id;
+            var userName = " ";
+            if (Session["UserName"] != null)
+            {
+                userName = Session["UserName"].ToString();
+            }
             var movieActors = db.MovieActors.ToList().Where(model => model.MovieID == id);
             var comments = db.Comments.Where(model => model.MovieID == id);
             var director = movie.Director;
@@ -68,6 +73,7 @@ namespace IMDB.Controllers
                 MovieActor = movieActors,
                 Director = director,
                 Comments = comments,
+                UserName = userName,
                 Counter = rateCount.Count()
             };
             
@@ -78,6 +84,7 @@ namespace IMDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult MovieProfile(MovieProfileViewModel profile,int? liked)
         {
+            int userID = (int)Session["UserId"];
             var movieId = Int32.Parse(Session["MovieId"].ToString());
             var alreadyLiked = db.Likes.SingleOrDefault(model => model.UserID == userID && model.MovieID == movieId);
 

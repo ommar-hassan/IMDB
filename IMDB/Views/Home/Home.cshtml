@@ -1,4 +1,5 @@
-﻿@model IMDB.ViewModels.HomeViewModel
+﻿
+@model IMDB.ViewModels.HomeViewModel
 @{
     ViewData["Title"] = "Home";
 }
@@ -27,9 +28,16 @@
 
             <li>@Html.ActionLink("Search", "Searching", new { controller = "Search" })</li>
 
-        </ul>
-        @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "btn" })
 
+        </ul>
+        @if (Model.UserName != " ")
+        {
+            <span style="padding:8px">@Html.DisplayFor(model => model.UserName)</span>
+        }
+        else
+        {
+            @Html.ActionLink("Sign In", "Login", new { controller = "User" }, new { @class = "btn" })
+        }
     </header>
 
     <br /><br /><br /><br />

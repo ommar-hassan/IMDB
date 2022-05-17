@@ -6,14 +6,12 @@ using System.Web;
 
 namespace IMDB.ViewModels
 {
-    public class HomeViewModel
+    public class FavoriteActor
     {
-        public IEnumerable<Movie> Movies { get; set; }
-
         public IEnumerable<Actor> Actors { get; set; }
 
-        public IEnumerable<Director> Directors { get; set; }
+        public UserFavoriteActor UserFavoriteActor { get; set; }
 
-        public string UserName { get; set; }
+        public User User { get; set; }
     }
 }

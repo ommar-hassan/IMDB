@@ -14,6 +14,11 @@ namespace IMDB.Controllers
         // GET: Home
         public ActionResult Home()
         {
+            var userName = " ";
+            if (Session["UserName"] != null)
+            {
+            userName = Session["UserName"].ToString();
+            }
             var directors = db.Directors.ToList();
             var actors = db.Actors.ToList();
             var movies = db.Movies.ToList();
@@ -21,7 +26,8 @@ namespace IMDB.Controllers
             {
                 Directors = directors,
                 Actors = actors,
-                Movies = movies
+                Movies = movies,
+                UserName = userName
             };
             return View(data);
         }

@@ -27,5 +27,7 @@ namespace IMDB.ViewModels
         public IEnumerable<Like> Likes { get; set; }
 
         public int Counter { get; set; }
+
+        public string UserName { get; set; }
     }
 }

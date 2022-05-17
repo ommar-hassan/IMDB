@@ -145,11 +145,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
@@ -172,6 +171,8 @@
     <Compile Include="ViewModels\Actor_Movie.cs" />
     <Compile Include="ViewModels\AssignsViewModel.cs" />
     <Compile Include="ViewModels\Director_Movie.cs" />
+    <Compile Include="ViewModels\FavoriteActor.cs" />
+    <Compile Include="ViewModels\FavoriteDirector.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MovieCreationViewModel.cs" />
     <Compile Include="Models\User.cs" />
@@ -194,7 +195,6 @@
     <Content Include="Views\Profile\DirectorList.cshtml" />
     <Content Include="Views\View\DirectorProfile.cshtml" />
     <Content Include="Views\Admin\ActorsEdit.cshtml" />
-    <Content Include="Views\Profile\MovieList.cshtml" />
     <Content Include="Views\Admin\DirectorssEdit.cshtml" />
     <Content Include="Views\Admin\MovieToActor.cshtml" />
     <Content Include="Views\View\MovieProfile.cshtml" />
@@ -206,6 +206,8 @@
     <Content Include="Views\Profile\Movie.cshtml" />
     <Content Include="Views\Admin\DirectorsEdit.cshtml" />
     <Content Include="Views\Admin\MovieEdit.cshtml" />
+    <Content Include="Views\Favorite\FavoriteActor.cshtml" />
+    <Content Include="Views\Favorite\FavoriteDirector.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

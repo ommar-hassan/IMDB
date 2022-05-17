@@ -63,7 +63,7 @@ namespace IMDB.Controllers
                     User validuser = db.Users.FirstOrDefault(User => User.Email.ToLower() == login.Email.ToLower() && User.Password == login.Password);
                     if (validuser != null)
                     {
-                        Session["Userid"] = validuser.UserID;
+                        Session["UserId"] = validuser.UserID;
                         Session["UserName"] = validuser.FirstName + " " + validuser.LastName;
                         Session["UserImg"] = validuser.ProfileIMG;
                         if(validuser.RoleID == 0)  //      Admin
@@ -101,6 +101,7 @@ namespace IMDB.Controllers
             }
             return View(user);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "userID,FirstName,LastName,Password,ProfileImage,Email")] User user)
@@ -115,4 +116,3 @@ namespace IMDB.Controllers
         }
     }
 }
-                  
