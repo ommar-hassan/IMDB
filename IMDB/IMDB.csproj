@@ -145,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\Admin.cs" />
+    <Compile Include="Classes\Find.cs" />
+    <Compile Include="Classes\GetData.cs" />
+    <Compile Include="Classes\IAdmin.cs" />
+    <Compile Include="Classes\SetData.cs" />
+    <Compile Include="Classes\UserFunctions.cs" />
     <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\AdminController.cs" />

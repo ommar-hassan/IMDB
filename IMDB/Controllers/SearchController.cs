@@ -7,6 +7,7 @@ using IMDB.ViewModels;
 using IMDB.Models;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using IMDB.Classes;
 
 namespace IMDB.Controllers
 {
@@ -14,41 +15,29 @@ namespace IMDB.Controllers
     public class SearchController : Controller
     {
       
-            DBContext db = new DBContext();
+            private readonly DBContext db = new DBContext();
+            UserFunctions user = new UserFunctions();
+            GetData get = new GetData();
             Search SearchResult = new ViewModels.Search();
+
             // GET: Search
             [HttpGet]
             public ActionResult Searching()
             {
-                SearchResult.Actors = db.Actors.ToList();
-
-                SearchResult.Directors = db.Directors.ToList();
-                SearchResult.Movies = db.Movies.ToList();
+                SearchResult.Actors = get.GetActors();
+                SearchResult.Directors = get.GetDirectors();
+                SearchResult.Movies = get.GetMovies();
                 return View(SearchResult);
             }
+
             [HttpPost]
-
             public ActionResult Searching(string SearchValue)
-            {
-                Search SearchResult = new ViewModels.Search();
+        {
+            Search SearchResult = new ViewModels.Search();
 
-                if (SearchValue == null)
-                {
-
-                }
-                else
-                {
-
-                    string[] SearchSplit = SearchValue.Split(' ');
-                    foreach (var item in SearchSplit)
-                    {
-                        SearchResult.Actors = db.Actors.Where(Actor => Actor.FirstName.StartsWith(item) || Actor.LastName.StartsWith(item) || SearchValue == null);
-                        SearchResult.Directors = db.Directors.Where(Director => Director.FirstName.StartsWith(item) || Director.LastName.StartsWith(item) || SearchValue == null);
-                        SearchResult.Movies = db.Movies.Where(Movie => Movie.MovieName.StartsWith(item) || SearchValue == null);
-                    }
-                }
-                return View(SearchResult);
-            }
-
+            user.Splitter(SearchValue, SearchResult);
+            return View(SearchResult);
         }
+
+    }
 }

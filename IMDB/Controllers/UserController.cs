@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using IMDB.Models;
 using System.Net;
 using System.IO;
+using IMDB.Classes;
 
 namespace IMDB.Controllers
 {
@@ -14,7 +15,11 @@ namespace IMDB.Controllers
     {
         // Registration
         private DBContext db = new DBContext();
+        readonly int adminRole = 0;
+        readonly int userRole = 1;
+        readonly Admin admin = new Admin();
 
+        SetData set = new SetData();
 
         [HttpGet]
         [AllowAnonymous]
@@ -31,12 +36,9 @@ namespace IMDB.Controllers
             {
                 if (userImage != null)
                 {
-                    MemoryStream target = new MemoryStream();
-                    userImage.InputStream.CopyTo(target);
-                    byte[] userImageByteArray = target.ToArray();
-                    User.ProfileIMG = userImageByteArray;
+                    set.SetProfileImage(userImage, User);
                 }
-                User.RoleID = 1;          //   1  for  User  >>  0  for  Admin
+                User.RoleID = adminRole;          //   1  for  User  >>  0  for  Admin
                 db.Users.Add(User);
                 db.SaveChanges();
                 return RedirectToAction("Login");
@@ -45,6 +47,7 @@ namespace IMDB.Controllers
             return View("Registration");
         }
 
+        
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login()
@@ -66,11 +69,11 @@ namespace IMDB.Controllers
                         Session["UserId"] = validuser.UserID;
                         Session["UserName"] = validuser.FirstName + " " + validuser.LastName;
                         Session["UserImg"] = validuser.ProfileIMG;
-                        if(validuser.RoleID == 0)  //      Admin
+                        if(validuser.RoleID == userRole)  //      Admin
                         {
                             return RedirectToAction("ActorList", "Profile");
                         }
-                        else {                   //       User
+                        else {                           //       User
                             return RedirectToAction("Home", "Home");
                         }
                     }
@@ -86,7 +89,6 @@ namespace IMDB.Controllers
             }
             return View();
         }
-
 
         public ActionResult Edit(int? id)
         {
@@ -108,11 +110,11 @@ namespace IMDB.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                admin.UpdateUserToDatabase(user);
                 return RedirectToAction("Home");
             }
             return View(user);
         }
+
     }
 }

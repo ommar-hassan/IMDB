@@ -1,4 +1,5 @@
-﻿using IMDB.Models;
+﻿using IMDB.Classes;
+using IMDB.Models;
 using IMDB.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,15 @@ namespace IMDB.Controllers
     public class ViewController : Controller
     {
         private DBContext db = new DBContext();
+        Find search = new Find();
          // random user to be replaced later
 
         // GET: View
         public ActionResult ActorProfile(int id)
         {
             MovieActor particpations = new MovieActor();
-            var actorView = db.Actors.SingleOrDefault(x => x.ActorID == id);
-            var actor_movie = db.MovieActors.Where(x => x.ActorID == id).ToList();
+            var actorView = search.FindActorByID(id);
+            var actor_movie = search.FindMovieActorsByID(id).ToList();
             Actor_Movie actorProfile = new Actor_Movie
             {
                 Actor = actorView,
@@ -32,11 +34,12 @@ namespace IMDB.Controllers
             return View(actorProfile);
         }
 
+
         public ActionResult DirectorProfile(int id)
         {
 
-            var directorView = db.Directors.SingleOrDefault(x => x.DirectorID == id);
-            var director_movie = db.Movies.Where(x => x.DirectorID == id).ToList();
+            var directorView = search.FindDirectorByID(id);
+            var director_movie = search.FindMovieDirectorsByID(id).ToList();
             Director_Movie directorProfile = new Director_Movie
             {
                 Director = directorView,
@@ -53,7 +56,7 @@ namespace IMDB.Controllers
         [AllowAnonymous]
         public ActionResult MovieProfile(int id)
         {
-            var movie = db.Movies.SingleOrDefault(x => x.MovieID == id);
+            var movie = search.FindMovieByID(id);
             if (movie == null)
                 return HttpNotFound();
 
