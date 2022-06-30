@@ -13,19 +13,11 @@ namespace IMDB.Classes
     {
         private DBContext db = new DBContext();
 
-        /// <summary>
-        /// Directors getter as a list
-        /// </summary>
-        /// <returns></returns>
         public List<Director> GetDirectors()
         {
             return db.Directors.ToList();
         }
 
-        /// <summary>
-        /// Movies and Actors Getter
-        /// </summary>
-        /// <returns></returns>
         public AssignsViewModel GetMovieActors()
         {
             return new AssignsViewModel()
@@ -35,29 +27,16 @@ namespace IMDB.Classes
             };
         }
 
-        /// <summary>
-        /// Movies getter as a list
-        /// </summary>
-        /// <returns></returns>
         public List<Movie> GetMovies()
         {
             return db.Movies.ToList();
         }
 
-        /// <summary>
-        /// Actors getter as a list
-        /// </summary>
-        /// <returns></returns>
         public List<Actor> GetActors()
         {
             return db.Actors.ToList();
         }
 
-        /// <summary>
-        /// Get Create Movie View Data
-        /// </summary>
-        /// <param name="movie"></param>
-        /// <returns></returns>
         public MovieCreationViewModel GetMovieDirectors(Movie movie)
         {
             return new MovieCreationViewModel
@@ -67,19 +46,11 @@ namespace IMDB.Classes
             };
         }
 
-        /// <summary>
-        /// get Directors as a list But Async
-        /// </summary>
-        /// <returns></returns>
         public async Task<List<Models.Director>> GetDirectorsAsync()
         {
             return await db.Directors.ToListAsync();
         }
 
-        /// <summary>
-        /// get Movies as a list But Async
-        /// </summary>
-        /// <returns></returns>
         public async Task<List<Models.Movie>> GetMoviesAsync()
         {
             return await db.Movies.ToListAsync();

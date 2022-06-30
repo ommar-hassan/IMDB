@@ -10,12 +10,7 @@ namespace IMDB.Classes
     public class UserFunctions : IAdmin
     {
         private DBContext db = new DBContext();
-        /// <summary>
-        /// Search for Data
-        /// </summary>
-        /// <param name="SearchValue"></param>
-        /// <param name="SearchResult"></param>
-        /// <param name="SearchSplit"></param>
+
         public void SearchData(string SearchValue, Search SearchResult, string[] SearchSplit)
         {
             foreach (var item in SearchSplit)
@@ -26,11 +21,6 @@ namespace IMDB.Classes
             }
         }
 
-        /// <summary>
-        /// Values Splitter with "space"
-        /// </summary>
-        /// <param name="SearchValue"></param>
-        /// <param name="SearchResult"></param>
         public void Splitter(string SearchValue, Search SearchResult)
         {
             if (SearchValue != null)

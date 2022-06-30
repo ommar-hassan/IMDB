@@ -12,21 +12,6 @@ namespace IMDB.Classes
     {
         private DBContext db = new DBContext();
 
-        /// <summary>
-        /// Update Actor Database Data
-        /// </summary>
-        /// <param name="newActor"></param>
-        public void UpdateActorToDatabase(Actor newActor)
-        {
-            db.Entry(newActor).State = EntityState.Modified;
-            db.SaveChanges();
-        }
-
-        /// <summary>
-        /// Copy data from old actor to new actor
-        /// </summary>
-        /// <param name="oldActor"></param>
-        /// <param name="newActor"></param>
         public void CopyActorData(Actor oldActor, Actor newActor)
         {
             newActor.FirstName = oldActor.FirstName;
@@ -36,10 +21,15 @@ namespace IMDB.Classes
             newActor.ActorIMG = oldActor.ActorIMG;
         }
 
-        /// <summary>
-        /// Delete Director From Movies
-        /// </summary>
-        /// <param name="id"></param>
+        public void CopyDirectorData(Director oldDirector, Director newDirector)
+        {
+            newDirector.FirstName = oldDirector.FirstName;
+            newDirector.LastName = oldDirector.LastName;
+            newDirector.Description = oldDirector.Description;
+            newDirector.Age = oldDirector.Age;
+            newDirector.DirectorIMG = oldDirector.DirectorIMG;
+        }
+
         public void DeleteDirectorFromMovies(int id)
         {
             foreach (var item in db.Movies)
@@ -52,10 +42,6 @@ namespace IMDB.Classes
             }
         }
 
-        /// <summary>
-        /// Delete Movies From Database
-        /// </summary>
-        /// <param name="id"></param>
         public void DeleteMovieFromDatabase(int id)
         {
             var movie = db.Movies.FirstOrDefault(model => model.MovieID == id);
@@ -63,36 +49,24 @@ namespace IMDB.Classes
             db.SaveChanges();
         }
 
-        /// <summary>
-        /// Copy Director Data to new one
-        /// </summary>
-        /// <param name="oldDirector"></param>
-        /// <param name="newDirector"></param>
-        public void CopyDirectorData(Director oldDirector, Director newDirector)
-        {
-            newDirector.FirstName = oldDirector.FirstName;
-            newDirector.LastName = oldDirector.LastName;
-            newDirector.Description = oldDirector.Description;
-            newDirector.Age = oldDirector.Age;
-            newDirector.DirectorIMG = oldDirector.DirectorIMG;
-        }
-
-        /// <summary>
-        /// Update Director to database
-        /// </summary>
-        /// <param name="newDirector"></param>
         public void UpdateDirectorToDatabase(Director newDirector)
         {
             db.Entry(newDirector).State = EntityState.Modified;
             db.SaveChanges();
         }
 
-        /// <summary>
-        /// Search for Data
-        /// </summary>
-        /// <param name="SearchValue"></param>
-        /// <param name="SearchResult"></param>
-        /// <param name="SearchSplit"></param>
+        public void UpdateUserToDatabase(User user)
+        {
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
+        public void UpdateActorToDatabase(Actor newActor)
+        {
+            db.Entry(newActor).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
         public void SearchData(string SearchValue, Search SearchResult, string[] SearchSplit)
         {
             foreach (var item in SearchSplit)
@@ -103,11 +77,6 @@ namespace IMDB.Classes
             }
         }
 
-        /// <summary>
-        /// Values Splitter with "space"
-        /// </summary>
-        /// <param name="SearchValue"></param>
-        /// <param name="SearchResult"></param>
         public void Splitter(string SearchValue, Search SearchResult)
         {
             if (SearchValue != null)
@@ -117,14 +86,6 @@ namespace IMDB.Classes
             }
         }
 
-        /// <summary>
-        /// Update User data into database
-        /// </summary>
-        /// <param name="user"></param>
-        public void UpdateUserToDatabase(User user)
-        {
-            db.Entry(user).State = EntityState.Modified;
-            db.SaveChanges();
-        }
+        
     }
 }

@@ -73,7 +73,14 @@
                     <h4>Director</h4>
                     <hr />
                     <div class="text-line">
-                        @Html.ActionLink(Model.Director.FirstName + " " + Model.Director.LastName, "DirectorProfile", new { id = Model.Director.DirectorID }, new { @class = "text-info" })
+                        @if (Model.Director == null)
+                        {
+                            <span>Null</span>
+                        }
+                        else
+                        {
+                            @Html.ActionLink(Model.Director.FirstName + " " + Model.Director.LastName, "DirectorProfile", new { id = Model.Director.DirectorID }, new { @class = "text-info" })
+                        }
                     </div>
                 </div>
             </div>
@@ -81,8 +88,11 @@
             {
                 @Html.AntiForgeryToken()
                 <div class="Likes">
+                    @if ( Model.UserName != " " )
+                    {
                     <button class=" like" value="1" name="liked"></button>
                     <button class=" dislike" value="0" name="liked"></button>
+                    }
                     <span style="position:absolute;margin-top:20px;margin-left:30px;">
                         @Html.DisplayFor(model => model.Counter)
                         Likes
@@ -102,39 +112,41 @@
                         @using (Html.BeginForm("MovieProfile", "View", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
+                            if (Model.UserName != " ")
+                            {
                             <h3 class="pull-left">New Comment</h3>
 
-                            <fieldset>
-                                <div class="row">
-                                    <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                                        @Html.TextAreaFor(model => model.Comment.Content)
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                                            @Html.TextAreaFor(model => model.Comment.Content)
+                                        </div>
                                     </div>
+                                </fieldset>
+                                <input type="submit" value="Submit" class="btn btn-normal pull-right" style="cursor:pointer;">
+                                <br />
+                            }
+                                <div class="media">
+                                    @foreach (var item in Model.Comments)
+                                    {
+                                        if (item.User.ProfileIMG != null)
+                                        {
+                                            <img class="media-object" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.User.ProfileIMG))" alt="@item.User.FirstName @item.User.LastName" />
+                                        }
+                                        else
+                                        {
+                                            <img class="media-object" src="~/Image/DefaultProfile.jpg" alt="@item.User.FirstName @item.User.LastName" />
+                                        }
+                                        <div class="media-body">
+
+                                            <h4 class="media-heading">@Html.DisplayFor(model => item.User.FirstName) @Html.DisplayFor(model => item.User.LastName)</h4>
+                                            <p style="margin-left:3%;">@Html.DisplayFor(model => item.Content)</p>
+                                        </div>
+                                        <br />
+                                    }
                                 </div>
-                            </fieldset>
-                            <input type="submit" value="Submit" class="btn btn-normal pull-right" style="cursor:pointer;">
-                            <br />
-
-                            <div class="media">
-                                @foreach (var item in Model.Comments)
-                                {
-                                    if (item.User.ProfileIMG != null)
-                                    {
-                                        <img class="media-object" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.User.ProfileIMG))" alt="@item.User.FirstName @item.User.LastName" />
-                                    }
-                                    else
-                                    {
-                                        <img class="media-object" src="~/Image/DefaultProfile.jpg" alt="@item.User.FirstName @item.User.LastName" />
-                                    }
-                                    <div class="media-body">
-
-                                        <h4 class="media-heading">@Html.DisplayFor(model => item.User.FirstName) @Html.DisplayFor(model => item.User.LastName)</h4>
-                                        <p style="margin-left:3%;">@Html.DisplayFor(model => item.Content)</p>
-                                    </div>
-                                    <br />
-                                }
-                            </div>
-                        }
-                    </div>
+                            }
+                        </div>
                 </div>
             </div>
         </div>
