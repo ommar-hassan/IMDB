@@ -9,28 +9,28 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IMDB.Classes.Find">
-    <Position X="3.75" Y="2" Width="1.5" />
+    <Position X="20.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAEAAQAAAAAAAAABAEAAQAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Classes\Find.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Classes.GetData">
-    <Position X="10.5" Y="2" Width="1.5" />
+    <Position X="27" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAQAAAAAAAgAQAAAAAAAQCAEAAAAAAAAAI=</HashCode>
       <FileName>Classes\GetData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Classes.SetData">
-    <Position X="12.75" Y="2" Width="1.5" />
+    <Position X="29.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAQAAEAAAAAQAAAAAAAAAgAAQAAIAAgAAA=</HashCode>
       <FileName>Classes\SetData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Classes.UserFunctions" BaseTypeListCollapsed="true">
-    <Position X="15" Y="2" Width="1.5" />
+    <Position X="31.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Classes\UserFunctions.cs</FileName>
@@ -38,70 +38,70 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IMDB.Controllers.AdminController">
-    <Position X="21.75" Y="9.25" Width="1.5" />
+    <Position X="37.5" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CgBgAAACQCBQAAAACAQAwAAAACEAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Controllers\AdminController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Controllers.FavoriteController">
-    <Position X="32.75" Y="12.75" Width="1.5" />
+    <Position X="47.75" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAACAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\FavoriteController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Controllers.HomeController">
-    <Position X="24" Y="9.25" Width="1.5" />
+    <Position X="39.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAAQAQAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\HomeController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Controllers.ProfileController">
-    <Position X="25.25" Y="13.5" Width="1.5" />
+    <Position X="41.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQEAAAAAAAQAAAAAAAAAAAIAAAAAABAAA=</HashCode>
       <FileName>Controllers\ProfileController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Controllers.SearchController">
-    <Position X="35.5" Y="10.25" Width="1.5" />
+    <Position X="41.5" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAQAAAAAAAAQAAAAAAAAAAAAAAgAAAAAQA=</HashCode>
       <FileName>Controllers\SearchController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Controllers.UserController">
-    <Position X="26.25" Y="9.25" Width="1.5" />
+    <Position X="47.5" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAQAAAAAAQAAAAACAEAAAACAAAQAAAEAAA=</HashCode>
       <FileName>Controllers\UserController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Controllers.ViewController">
-    <Position X="30.75" Y="9.25" Width="1.5" />
+    <Position X="47.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAEAAAAAAAAAAACQAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Controllers\ViewController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.DBContext" Collapsed="true">
-    <Position X="111.5" Y="0.75" Width="1.5" />
+    <Position X="18.75" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAADAAAAAAkAAAAAAAAAAAEAAAAAACAAAgAABAIAE=</HashCode>
       <FileName>DBLayer\DBContext.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Models.Actor">
-    <Position X="1.5" Y="2" Width="1.5" />
+    <Position X="18" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAgAAAAAEAAAAAgAAAAAIAAAAAAAAAAAAg=</HashCode>
       <FileName>Models\Actor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Models.Comment">
-    <Position X="46.5" Y="2" Width="1.5" />
+    <Position X="29.75" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAgAAEAAAAAAAAAgAAAAAAAEgAAAAAAAAAAA=</HashCode>
       <FileName>Models\Comment.cs</FileName>
@@ -115,14 +115,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Models.Like">
-    <Position X="48.75" Y="2" Width="1.5" />
+    <Position X="32" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgBAAAAAAAAkAAAAAAAAAgAAAAAAAEAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Like.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Models.Movie">
-    <Position X="6" Y="2" Width="1.5" />
+    <Position X="22.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAABAEAAAgAAAAAAAAAAAAAAAAAIEAAAAAAAAQAAA=</HashCode>
       <FileName>Models\Movie.cs</FileName>
@@ -150,14 +150,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Models.UserFavoriteDirector">
-    <Position X="51" Y="2" Width="1.5" />
+    <Position X="34.25" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQABABAAAAAAgAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\UserFavoriteDirector.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.Models.UserFavoriteMovie">
-    <Position X="8.25" Y="2" Width="1.5" />
+    <Position X="24.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAkAAAAAAAAAgAAAAAAAEAAAAAAAAAAAA=</HashCode>
       <FileName>Models\UserFavoriteMovie.cs</FileName>
@@ -178,7 +178,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.ViewModels.AssignsViewModel">
-    <Position X="44.25" Y="2" Width="1.5" />
+    <Position X="27.5" Y="13.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAkAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\AssignsViewModel.cs</FileName>
@@ -199,7 +199,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.ViewModels.FavoriteDirector">
-    <Position X="53.25" Y="2" Width="1.5" />
+    <Position X="33.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>ViewModels\FavoriteDirector.cs</FileName>
@@ -227,7 +227,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="IMDB.ViewModels.Search">
-    <Position X="55.25" Y="2" Width="1.5" />
+    <Position X="35.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\Search.cs</FileName>
@@ -238,17 +238,17 @@
     <TypeIdentifier />
   </Class>
   <Class Name="System.Web.Mvc.Controller">
-    <Position X="28.5" Y="8" Width="1.5" />
+    <Position X="44.5" Y="7.25" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="System.Data.Entity.DbContext" Collapsed="true">
-    <Position X="114.5" Y="0.75" Width="1.5" />
+    <Position X="21.75" Y="17.25" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="IMDB.Classes.IAdmin" Collapsed="true">
-    <Position X="111.5" Y="2" Width="1.5" />
+    <Position X="18.75" Y="18.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Classes\IAdmin.cs</FileName>

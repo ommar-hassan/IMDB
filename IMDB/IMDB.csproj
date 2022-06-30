@@ -127,6 +127,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Controllers\IMDb ClassDiagram.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Image\search.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -148,7 +149,7 @@
     <Compile Include="Classes\Admin.cs" />
     <Compile Include="Classes\Find.cs" />
     <Compile Include="Classes\GetData.cs" />
-    <Compile Include="Classes\IAdmin.cs" />
+    <Compile Include="Interface\IAdmin.cs" />
     <Compile Include="Classes\SetData.cs" />
     <Compile Include="Classes\UserFunctions.cs" />
     <Compile Include="Controllers\FavoriteController.cs" />
